@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://hcmc.uvic.ca/ns/staticSearch">
+    <params>
+        <searchFile>./html/search.html</searchFile>
+        <recurse>false</recurse>
+        <linkToFragmentId>true</linkToFragmentId>
+        <scrollToTextFragment>false</scrollToTextFragment>
+        <phrasalSearch>true</phrasalSearch>
+        <wildcardSearch>true</wildcardSearch>
+        <createContexts>true</createContexts>
+        <resultsPerPage>1</resultsPerPage>
+        <minWordLength>3</minWordLength>
+        <!--NOTE: If phrasalSearch is set to TRUE, then
+        maxContexts prop will be ignored-->
+        <maxKwicsToHarvest>5</maxKwicsToHarvest>
+        <maxKwicsToShow>5</maxKwicsToShow>
+        <totalKwicLength>15</totalKwicLength>
+        <kwicTruncateString>...</kwicTruncateString>
+        <verbose>false</verbose>
+        <stopwordsFile>stopwords.txt</stopwordsFile>
+        <dictionaryFile>words.txt</dictionaryFile>
+        <indentJSON>false</indentJSON>
+        <outputFolder>static-search</outputFolder>
+    </params>
+
+    <rules>
+        <rule match="head" weight="0"/>
+
+        <rule match="body[@id='start']" weight="0"/>
+
+        <rule match="body[@id='register']" weight="0"/>
+
+        <rule match="header" weight="0"/>
+
+        <rule match="div[@id='pageTitle']" weight="0"/>
+
+        <rule match="div[@id='selectList']" weight="0"/>
+
+        <rule match="div[@id='letterTitle']" weight="0"/>
+
+        <rule match="div[@id='letterFormat']" weight="0"/>
+
+        <rule match="div[@id='letterMdata']" weight="0"/>
+
+        <rule match="div[@id='indexLetters']" weight="0"/>
+
+        <rule match="footer" weight="0"/>
+    </rules>
+</config>

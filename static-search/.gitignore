@@ -1,0 +1,41 @@
+# Files from schema build. #
+*.lite.odd
+*.processedodd
+*_patched.odd
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Generated version files #
+VERSION
+
+# Temporary files from the build #
+ssTemp_*
+
+# Generated configuration file #
+config.xsl
+
+#Files generated during build process:
+#We exclude any JS or HTML files in the docs
+#folder...
+
+/docs/*.js
+/docs/*.html
+/docs/search/*
+
+#...but we re-include the single-file 
+#documentation.
+
+!/docs/staticSearch.html
+
+#Avoid including any generates zip distros.
+/staticSearch*.zip
+
+
