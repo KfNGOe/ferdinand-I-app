@@ -90,13 +90,13 @@ jobs:
           asset_path: ./html.zip
           asset_name: html.zip
           asset_content_type: application/gzip
-      #- name: Pushes to kfngoe.github.io
-       # uses: cpina/github-action-push-to-another-repository@main
-       # env:
-       #   API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-       # with:
-       #   source-directory: "html"
-       #   destination-github-username: "KfNGOe"
-       #   destination-repository-name: "kfngoe.github.io"
-       #   user-email: ferdinand-I-app@github.io
-       #   target-branch: main
+      - name: Pushes to kfngoe.github.io
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          source-directory: "html"
+          destination-github-username: "KfNGOe"
+          destination-repository-name: "kfngoe.github.io"
+          user-email: ferdinand-I-app@github.io
+          target-branch: main
