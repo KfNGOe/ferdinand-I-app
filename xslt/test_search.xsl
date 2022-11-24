@@ -108,13 +108,15 @@
                                         </thead>
                                         <tbody></tbody>
                                     </table>
+
+                                    <div id="rhPagination" style="display: none;">                                    
+                                        <button class="btn btn-primary" id="rhShowMore">Show more</button>                     
+                                        <button class="btn btn-primary" id="rhShowAll">Show all</button>
+                                        <button class="btn btn-primary" id="rhShowLess">Show less</button>
+                                    </div>
                                 </div>
                                 
-                                <div id="rhPagination" style="display: none;">
-                                    <button class="btn btn-primary" id="rhShowMore">Show more</button>                     
-                                    <button class="btn btn-primary" id="rhShowAll">Show all</button>
-                                    <button class="btn btn-primary" id="rhShowLess">Show less</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>                    
@@ -123,88 +125,9 @@
                     <xsl:call-template name="html_footer"/>
                 </footer>
                 
-                <script>
-                    function langDeEn(input) {
-                        var navbar = "nav.navbar ";
-                        var pagetitle = "#pageTitle ";
-                        var searchcontent = "#searchContent ";
-                        var resultsearch = "#resultSearch ";
-                        var footer = "footer ";
-                        if (input == "de") {
-                        localStorage.setItem("language", "de");
-                        $("div.langmenu a:lang(en)").removeClass("active");
-                        $("div.langmenu a:lang(de)").addClass("active");
-                        $(navbar + "div.en").hide();
-                        $(navbar + "div.de").show();
-                        $(pagetitle + "div.en").hide();
-                        $(pagetitle + "div.de").show();
-                        $(searchcontent + "div.de").show();
-                        $(searchcontent + "div.en").hide();
-                        $(resultsearch + "div.en").hide();
-                        $(resultsearch + "div.de").show();
-                        $(footer + "div.en").hide();
-                        $(footer + "div.de").show();
-                        
-                        $("input#ssQuery").attr("placeholder", "Begriff hier eingeben");
-                        $("button#ssDoSearch").text("Absenden");
-                        $("button#rhShowMore").text("Zeige mehr");
-                        $("button#rhShowAll").text("Zeige alle");
-                        $("button#rhShowLess").text("Zeige weniger");
-                        } else {
-                        localStorage.setItem("language", "en");
-                        $("div.langmenu a:lang(de)").removeClass("active");
-                        $("div.langmenu a:lang(en)").addClass("active");
-                        $(navbar + "div.de").hide();
-                        $(navbar + "div.en").show();
-                        $(pagetitle + "div.de").hide();
-                        $(pagetitle + "div.en").show();
-                        $(searchcontent + "div.de").hide();
-                        $(searchcontent + "div.en").show();
-                        $(resultsearch + "div.de").hide();
-                        $(resultsearch + "div.en").show();
-                        $(footer + "div.de").hide();
-                        $(footer + "div.en").show();
-                        
-                        $("input#ssQuery").attr("placeholder", "Enter term here");
-                        $("button#ssDoSearch").text("Submit");
-                        $("button#rhShowMore").text("Show more");
-                        $("button#rhShowAll").text("Show all");
-                        $("button#rhShowLess").text("Show less");
-                        }
-                    }
-                </script>
-                <script>
-                        $(document).ready(function() {
-                        console.log("ready!");
-                        $("ul.navbar-nav li.nav-item a").removeClass("active");
-                        $("[href='search.html']").addClass("active");
-                        
-                        $("div#questionSearch").show();
-                        $("div#showInputSearch").hide();
-                        
-                        let anchor = $(location).attr("hash"); //get link anchor (#...)
-                        if (anchor.length != 0) {
-                        //check if link anchor exists
-                        $(anchor).click(); //click on the menu item to open element
-                        }
-                        
-                        console.log(localStorage.getItem("language"));
-                        
-                        if (localStorage.getItem("language") === null || localStorage.getItem("language") == "undefined") {
-                            localStorage.setItem("language", "de");
-                        }
-                        
-                        langDeEn(localStorage.getItem("language"));
-                    }) ;
-                    
-                    $("div.langmenu a").click(function() {
-                    var click_lang = $(this);
-                    console.log(click_lang.attr("lang"));
-                    langDeEn(click_lang.attr("lang"));
-                    }) ;
-                </script>                
-                
+                <script src="js/language.js"/>
                 <script src="js/search.js"></script>
+                
             </body>
         </html>
     </xsl:template>

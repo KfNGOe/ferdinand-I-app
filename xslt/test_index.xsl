@@ -30,87 +30,61 @@
                 
                 <main>
                     <!-- Page Title -->
-                    <div class="container" id="pageTitle">
-                        <div class="de">
-                            <div class="row justify">
-                                <div class="col-lg-3 pl-0 pr-5">
-                                    <!--&nbsp;  -->
-                                </div>
-                                <div class="col-lg-9 pl-5 pr-0">
-                                    <h1>Start</h1>
-                                    <!-- <h2 class="submenutitle"> · Benutzung</h2> -->
-                                </div>                            
+                    <div class="container" id="pageTitle">                        
+                        <div class="row justify">
+                            <div class="col-lg-3 pl-0 pr-5">
+                                <!--&nbsp;  -->
                             </div>
-                        </div>    
-                        <div class="en" style="display: none">
-                            <div class="row justify">
-                                <div class="col-lg-3 pl-0 pr-5">
-                                    <!--&nbsp;  -->
-                                </div>
-                                <div class="col-lg-9 pl-5 pr-0">
-                                    <h1>Start</h1>
-                                    <!-- <h2 class="submenutitle"> · Benutzung</h2> -->
-                                </div>                            
-                            </div>
-                        </div>
+                            <div class="col-lg-9 pl-5 pr-0">
+                                <h1>
+                                    <span class="de">Start</span>
+                                    <span class="en" style="display: none">Start</span>
+                                </h1>
+                                <!-- <h2 class="submenutitle"> · Benutzung</h2> -->
+                            </div>                            
+                        </div>                        
                     </div>
                     
                     <!-- Page Content -->
                     <div class="container" id="pageContent">
                         <div class="row">
                             <div class="side-bar col-lg-3 left-column pl-0 pr-5">
-                                <div class="de">
-                                    <nav>
-                                        <ul class="submenu-start">
-                                            <li class="list-item">
-                                                <a data-toggle="collapse" href="#familienkorrespondenz" id="famChro" role="button" aria-expanded="false" aria-controls="familienkorrespondenz">Die Familienkorrespondenz</a>
-                                                <div class="collapse" id="familienkorrespondenz">
-                                                    <ul class="submenu-start collapsable">
-                                                        <li class="list-item"><a href="#allChar" id="allChar" role="button">Allgemeine Charakteristik</a></li><!-- href="#0" due to css underline -->
-                                                        <li class="list-item"><a href="#korrPar" id="korrPar" role="button">Die Korrespondenzpartner</a></li>
-                                                        <li class="list-item"><a href="#sprFoIn" id="sprFoIn" role="button">Sprache – Form – Inhalt</a></li>
-                                                        <li class="list-item"><a href="#druBrie" id="druBrie" role="button">Die Druckedition der Briefe</a></li>
-                                                        <li class="list-item"><a href="#ausBibl" id="ausBibl" role="button">Auswahlbibliographie</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>                                        
-                                            <li class="list-item"><a href="#vorwKomm" id="vorwKomm" role="button">Vorwort der Kommission (1912)</a></li>
-                                            <li class="list-item"><a href="#vorwBauer" id="vorwBauer" role="button">Vorwort Wilhelm Bauer (1912)</a></li>
-                                            <li class="list-item"><a href="#einlBauer" id="einlBauer" role="button">Einleitung von Wilhelm Bauer (1912)</a></li>
-                                            <li class="list-item"><a href="#digEdit" id="digEdit" role="button">Die digitale Edition</a></li>
-                                            <li class="list-item"><a href="#erschBande" id="erschBande" role="button">Bisher im Druck erschienene Bände</a></li>
-                                            <li class="list-item"><a href="#verzBuch" id="verzBuch" role="button">Verzeichnis der Büchertitel</a></li>                                                                                
-                                            <li class="list-item"><a href="#brieflist" id="brieflist" role="button">Brieflisten 1537 – 1564</a></li>
-                                        </ul>
-                                    </nav>    
-                                </div>
-                                <div class="en" style="display: none">
-                                    <nav>
-                                        <ul class="submenu-start">
-                                            <li class="list-item">
-                                                <a data-toggle="collapse" href="#familienkorrespondenz" id="famChro" role="button" aria-expanded="false" aria-controls="familienkorrespondenz">The Family Correspondence</a>
-                                                <div class="collapse" id="familienkorrespondenz">
-                                                    <ul class="submenu-start collapsable">
-                                                        <li class="list-item"><a href="#allChar" id="allChar" role="button">General characteristics</a></li><!-- href="#0" due to css underline -->
-                                                        <li class="list-item"><a href="#korrPar" id="korrPar" role="button">The correspondence partners</a></li>
-                                                        <li class="list-item"><a href="#sprForIn" id="sprFoIn" role="button">Language – form – content</a></li>
-                                                        <li class="list-item"><a href="#druBrie" id="druBrie" role="button">The printed edition of the letters</a></li>
-                                                        <li class="list-item"><a href="#ausBibl" id="ausBibl" role="button">Selected bibliography</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>                                        
-                                            <li class="list-item"><a href="#vorwKomm" id="vorwKomm" role="button">Foreword by the Commission (1912)</a></li>
-                                            <li class="list-item"><a href="#vorwBauer" id="vorwBauer" role="button">Foreword by Wilhelm Bauer (1912)</a></li>
-                                            <li class="list-item"><a href="#einlBauer" id="einlBauer" role="button">Introduction by Wilhelm Bauer (1912)</a></li>
-                                            <li class="list-item"><a href="#digEdit" id="digEdit" role="button">The digital edition</a></li>
-                                            <li class="list-item"><a href="#erschBande" id="erschBande" role="button">Volumes published in print so far</a></li>
-                                            <li class="list-item"><a href="#verzBuch" id="verzBuch" role="button">Index of book titles</a></li>
-                                            <li class="list-item"><a href="#brieflist" id="brieflist" role="button">Index of letters 1537 – 1564</a></li>
-                                        </ul>
-                                    </nav> 
-                                </div>
+                                <nav>
+                                    <ul class="submenu-start">
+                                        <li class="list-item">
+                                            <a href="#korrFerd_text" id="korrFerd" role="button">
+                                                <span class="de">Die Familienkorrespondenz Ferdinands I.</span>
+                                                <span class="en" style="display: none">The Family Correspondence of Ferdinand I.</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-item">
+                                            <a href="#digEd_text" id="digEd" role="button">
+                                                <span class="de">Die digitale Edition</span>
+                                                <span class="en" style="display: none">The digital edition</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-item">                                               
+                                            <a href="#erschBaende_text" id="erschBaende" role="button">
+                                                <span class="de">Bisher im Druck erschienene Bände</span>
+                                                <span class="en" style="display: none">Volumes published in print so far</span>                                                    
+                                            </a>
+                                        </li>                                                                                
+                                        <li class="list-item">
+                                            <a href="#briefList_text" id="briefList" role="button">
+                                                <span class="de">Brieflisten 1537 – 1564</span>
+                                                <span class="en" style="display: none">Index of letters 1537 – 1564</span>                                                    
+                                            </a>
+                                        </li>
+                                        <li class="list-item">
+                                            <a href="#texts_text" id="texts" role="button">
+                                                <span class="de">Begleittexte zum ersten Band (1912)</span>
+                                                <span class="en" style="display: none">Companion texts to the first volume (1912)</span>                                                    
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>           
                             </div>
-                            <div class="texts col-lg-9 right-column pl-5 pr-0">
+                            <div class="texts col-lg-9 right-column pl-5 pr-0">                                
                                 <xsl:call-template name="text_start"/>
                             </div>
                         </div>
@@ -122,83 +96,12 @@
                     <xsl:call-template name="html_footer"/>
                 </footer>
                 
-                <script>
-                    function langDeEn(input) {
-                    var navbar = "nav.navbar ";
-                    var pagetitle = "#pageTitle ";
-                    var sidebar = "#pageContent " ;                        
-                    var footer = "footer ";
-                    if (input == "de") {
-                    localStorage.setItem("language", "de");
-                    $("div.langmenu a:lang(en)").removeClass("active");
-                    $("div.langmenu a:lang(de)").addClass("active");
-                    $(navbar + "div.en").hide();
-                    $(navbar + "div.de").show();
-                    $(pagetitle + "div.en").hide();
-                    $(pagetitle + "div.de").show();
-                    $( sidebar + "div.en" ).hide(); 
-                    $( sidebar + "div.de" ).show();
-                    $(footer + "div.en").hide();
-                    $(footer + "div.de").show();
-                    } else {
-                    localStorage.setItem("language", "en");
-                    $("div.langmenu a:lang(de)").removeClass("active");
-                    $("div.langmenu a:lang(en)").addClass("active");
-                    $(navbar + "div.de").hide();
-                    $(navbar + "div.en").show();
-                    $(pagetitle + "div.de").hide();
-                    $(pagetitle + "div.en").show();
-                    $( sidebar + "div.de" ).hide(); 
-                    $( sidebar + "div.en" ).show();
-                    $(footer + "div.de").hide();
-                    $(footer + "div.en").show();
-                    }
-                    }
-                </script>
-                <script>
-                    $( document ).ready(function() {
-                    console.log( "ready!" );                                                
-                    $("ul.navbar-nav li.nav-item a").removeClass("active");
-                    $( "[href='index.html']" ).addClass("active");
-                    
-                    
-                    ///link anchor //to make an link anchor work set the href tag to #[uniqueName] and its id to [uniqueName] (uniquenames should match) 
-                    let anchor = $(location).attr('hash');  //get link anchor (#...)  
-                    if(anchor.length!=0){  //check if link anchor exists
-                    $(anchor).click(); //click on the menu item to open element
-                    }
-                    
-                    console.log(localStorage.getItem("language"));
-                    
-                    if (localStorage.getItem("language") === null || localStorage.getItem("language") == "undefined") {
-                    localStorage.setItem("language", "de");
-                    }
-                    
-                    langDeEn(localStorage.getItem("language")) ;                        
-                    }) ;
-                    
-                    $("div.langmenu a").click(function() {
-                    var click_lang = $(this);
-                    console.log(click_lang.attr("lang"));
-                    langDeEn(click_lang.attr("lang"));
-                    }) ;
-                </script>
-                <script>
-                    $( "ul.submenu-start li.list-item a" ).click(function() {
-                        var click = $( this );
-                        var textId = "#texts #" + click.attr("id");
-                        var itemId = "ul.submenu-start li.list-item #" + click.attr("id");
-                        
-                        $( "div.text" ).hide();
-                        $( textId ).toggle();
-                        
-                        $("ul.submenu-start li.list-item a").removeClass("active");
-                        $( itemId ).addClass("active");
-                    });
-                </script>
+                <script src="js/language.js"/>
+                <script src="js/frame.js"/>
+                <script src="js/index.js"/>
                                                 
             </body>
         </html>
     </xsl:template>
-       
+
 </xsl:stylesheet>

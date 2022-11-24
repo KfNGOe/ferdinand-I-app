@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Index Register in TEI generated from TEI data of letters</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <list>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d6e99a1054">Böhmen</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Bohemie</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e141a1054">Brüsseler Teilungsvertrag (1522)</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>traicté, fait à Bruxelles</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e199a1054">Burgund, Freigrafschaft</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>conté de Bourgoingne</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d5e283a1054">Burgund, Herzogtum</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Burgundie</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d6e111a1054">Christenheit</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Christi fideles</p>
+                  <p>chrestienté</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">3</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e479a1054">Deutsche</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Allemans</p>
+                  <p>Allemagnes</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">2</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e223a1054">Deutschland</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Allemagne</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">4</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e130a1054">Elsass</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Alsache</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e303a1054">England</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Angleterre</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">8</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e167a1054">F, Römischer König, Wahl</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>roi des Romains</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">2</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e126a1054">Ferrette</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Ferrette</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e215a1054">Flandern</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Flandres</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e172a1054">Frankreich</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>François</p>
+                  <p>commung ennemi</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">3</note>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">8</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e260a1054">Gesundheit/Krankheit, K</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>bonne santé</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">6</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d5e296a1054">HRR</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>sacri Romani imperii</p>
+                  <p>sainct empire</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">2</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e448a1054">HRR, Regiment</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>regime imperial</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e455a1054">HRR, Reichskammergericht</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>chambre</p>
+                  <p>chambre imperialle</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e391a1054">HRR, Reichstag, Nürnberg (1522/23 und 1524), Auslagen Fs</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>dietes</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e496a1054">Italien</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Ytalie</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">1</note>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">2</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e163a1054">K, Kaiserkrönung</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>coronnes</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">2</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d5e129a1054">Kroatien</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Kroatien</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d6e123a1054">Lutheraner</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Lutheranos</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d6e105a1054">Mähren</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Moravie</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e530a1054">Maximilian I., Schulden</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>debtes de feu l’empereur</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e382a1054">Münzordnung</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Münzordnung</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para">6</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e225a1054">Niederösterreich</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Basse Austrice</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d5e277a1054">Österreich</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Austrie</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e307a1054">Pavia, Schlacht von</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>la victoire</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">8</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d6e117a1054">Pikarden (Hussiten)</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Picardicam sectam</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e375a1054">Reichsregiment</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Reichsregiments</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para">6</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d8e371a1054">Reichstag, Nürnberg</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Nürnberger Reichstagsabschied</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para">6</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e165a1054">Schweiz</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Suysses</p>
+                  <p>Suysse</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">3</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d5e289a1054">Spanien</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Hispaniarum</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e148a1054">Tirol</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>comptes de Tirol</p>
+                  <p>Tirol</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e655a1054">Türkenabwehr</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Türkenhilfe</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para">6</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e361a1054">Venedig, Vertrag mit</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>traicté de paix</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e306a1054">Vorlande</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>autres pieces</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="index">
+                  <index>
+                     <term xml:id="index_d7e180a1054">Württemberg</term>
+                  </index>
+               </note>
+               <note type="writings">
+                  <p>Wiertemberghe</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+         </list>
+      </body>
+   </text>
+</TEI>

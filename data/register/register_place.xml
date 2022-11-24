@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Place Register in TEI generated from TEI data of letters</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <list>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d8e205a1053">Besançon</placeName>
+               </note>
+               <note type="writings">
+                  <p>Besançon</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para">3</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d8e378a1053">Esslingen</placeName>
+               </note>
+               <note type="writings">
+                  <p>Eßlingen</p>
+               </note>
+               <note type="occurence">
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para">6</note>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d6e173a1053">Esztergom</placeName>
+               </note>
+               <note type="writings">
+                  <p>Strigoniense</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d7e133a1053">Haguenau</placeName>
+               </note>
+               <note type="writings">
+                  <p>Hagenoia</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d4e151a1053">Innsbruck</placeName>
+               </note>
+               <note type="writings">
+                  <p>Inspruck</p>
+               </note>
+               <note type="occurence">
+                  <p source="A010.xml">
+                     <val>A10</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d7e168a1053">Lothringen</placeName>
+               </note>
+               <note type="writings">
+                  <p>Lorrains</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d7e574a1053">Madrid</placeName>
+               </note>
+               <note type="writings">
+                  <p>Madril</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+                  <p source="A133.xml">
+                     <val>A133</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d7e394a1053">Nürnberg</placeName>
+               </note>
+               <note type="writings">
+                  <p>Noremberghe</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d6e179a1053">Prag</placeName>
+               </note>
+               <note type="writings">
+                  <p>Prag</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d7e507a1053">Provence</placeName>
+               </note>
+               <note type="writings">
+                  <p>Provence</p>
+               </note>
+               <note type="occurence">
+                  <p source="A121a.xml">
+                     <val>A121a</val>
+                     <note type="volNr">1</note>
+                     <note type="div">transcription</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d5e110a1053">Senj</placeName>
+               </note>
+               <note type="writings">
+                  <p>Zengg</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d5e305a1053">Šintava</placeName>
+               </note>
+               <note type="writings">
+                  <p>Sempthe</p>
+               </note>
+               <note type="occurence">
+                  <p source="A031.xml">
+                     <val>A31</val>
+                     <note type="volNr">1</note>
+                     <note type="div"/>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+            <item>
+               <note type="place">
+                  <placeName xml:id="place_d6e188a1053">Wien</placeName>
+               </note>
+               <note type="writings">
+                  <p>Wien.</p>
+               </note>
+               <note type="occurence">
+                  <p source="A093.xml">
+                     <val>A93</val>
+                     <note type="volNr">1</note>
+                     <note type="div">commentary</note>
+                     <note type="para"/>
+                  </p>
+               </note>
+            </item>
+         </list>
+      </body>
+   </text>
+</TEI>

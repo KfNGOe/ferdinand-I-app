@@ -1,0 +1,61 @@
+name: Build data
+
+on: 
+  push:
+    paths:
+        - "trigger.txt"  
+  
+jobs:
+  build_pages:
+    name: Build from app repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform Checkout 
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: "11"
+          distribution: "adopt"
+      - name: Install
+        run: |
+          sudo bash install.sh
+      - name: Install Ant-Contrib
+        run: |
+          wget https://repo1.maven.org/maven2/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3.jar
+          mv ant-contrib-1.0b3.jar /usr/share/ant/lib      
+      - name: Build
+        run: |
+          sudo bash build_test.sh
+      - name: Build index
+        run: |
+          sudo bash build_index.sh
+      - name: Zip Html folder
+        run: |
+          zip -r html.zip html/
+      - name: Set outputs
+        id: vars
+        run: echo "timestap=$(date +%s)" >> $GITHUB_ENV
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: ${{ env.timestap }}
+      - name: Create Release
+        id: create_release
+        uses: juitnow/github-action-create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{ env.timestap }}
+          release_name: Release ${{ env.timestap }}
+          body: Generated Release
+          draft: false
+          prerelease: false
+      - name: upload artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./html.zip
+          asset_name: html.zip
+          asset_content_type: application/gzip

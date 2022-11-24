@@ -13,7 +13,7 @@
             <xd:p><xd:b>Created on:</xd:b> May 09, 2018</xd:p>
             <xd:p><xd:b>Author:</xd:b> jtakeda</xd:p>
             <xd:p>This transformation takes the big documentation document produced by spiffing up the standard TEI documentation
-                and creates chapters from it. It also creates a TOC sidebar on the side and adds a search page to the front.</xd:p>
+                and creates chapters from it. It also creates a TOC pagecontent on the side and adds a search page to the front.</xd:p>
         </xd:desc>
     </xd:doc>
     

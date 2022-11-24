@@ -132,11 +132,8 @@
             with a link element pointing to the CSS file.</xd:desc>
     </xd:doc>
     <xsl:template match="style[@id='ssCss'] | link[@id='ssCss']">
-        <!-- RH 
         <link rel="stylesheet" href="{$outputFolder}/ssSearch.css" id="ssCss"/>
-        -->
-        <!-- RH
-            <style id="ssCss">
+        <!--<style id="ssCss">
             <xsl:comment>
                 <xsl:value-of select="$css" disable-output-escaping="yes"/>
             </xsl:comment>
@@ -150,15 +147,11 @@
             so that any subsequent style element provided by the user can override it.</xd:desc>
     </xd:doc>
     <xsl:template match="head[not(*[@id='ssCss'])]">
-        
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-<!-- RH -->
-            <!-- <link rel="stylesheet" href="{$outputFolder}/ssSearch.css" id="ssCss"/> -->
-<!-- RH --> 
+            <link rel="stylesheet" href="{$outputFolder}/ssSearch.css" id="ssCss"/>
             <xsl:apply-templates select="node()"/>
         </xsl:copy>
-        
     </xsl:template>
 
     <xd:doc>
@@ -200,7 +193,7 @@
 
             <!--Now add the script for the staticSearch library-->
 
-            <script src="{$outputFolder}/ssSearch-debug.js"><!-- Don't self-close script tags. --></script>
+            <script src="{$outputFolder}/ssSearch.js"><!-- Don't self-close script tags. --></script>
 
             <xsl:comment>
               Note that if you want to debug a problem with the JavaScript, you can
@@ -208,22 +201,11 @@
               unminified code instead.
             </xsl:comment>
 
-            <!-- RH -->
+            <!--Special on script onload to the start up the StaticSearch-->
             <script>
-                var Sch ;
-                window.addEventListener('load', function(){
-                Sch = new StaticSearch() ;
-                
-                Sch.searchFinishedHook = function(num) {
-                console.log("search returned");
-                console.log(num);
-                transformSearchResultLinks();
-                showMaxHits();
-                showMinWordLength() ;
-                } ;
-                }) ;
+                var Sch;
+                window.addEventListener('load', function(){Sch = new StaticSearch();});
             </script>
-            <!-- RH -->
 
             <!--Now create the form-->
             <form accept-charset="UTF-8" id="ssForm"
@@ -241,60 +223,242 @@
                 >
                 
                 <!--Standard inputs-->
-<!-- RH -->
-                <div id="ssQueryAndButton">
-                    <div class="form-group row">
-                        <div class="de">
-                            <label class="col-12 col-form-label">Suche nach</label></div>
-                        <div class="en"><label class="col-12 col-form-label">Searching for</label></div>
-                        <div class="col-12">
-                            <!-- <input type="text" id="ssQuery"/> -->
-                            <input type="text" placeholder="Begriff hier eingeben" class="form-control" id="ssQuery"/>
-                        </div>
-                    </div>
+                <span class="ssQueryAndButton">
+                    <!-- NOTE: We no longer use a validation pattern because
+                         browser behaviour is too variable. -->
+                    <!--<xsl:variable name="validationPattern" as="xs:string">\s*(.*([^\*\?\[\]\s]+[^\s]*){3})+\s*</xsl:variable>
+                    <input type="text" id="ssQuery" pattern="{$validationPattern}"/>-->
+                    <input type="text" id="ssQuery"/>
+                    <button id="ssDoSearch"><xsl:sequence select="hcmc:getCaption('ssDoSearch', $captionLang)"/></button>
+                </span>
+                
+                <xsl:if test="not(empty($filterJSONURIs))">
+                    <xsl:variable name="descFilters" select="$filterJSONURIs[matches(.,'ssDesc\d+.*\.json')]"/>
+                    <xsl:variable name="dateFilters" select="$filterJSONURIs[matches(.,'ssDate\d+.*\.json')]"/>
+                    <xsl:variable name="boolFilters" select="$filterJSONURIs[matches(.,'ssBool\d+.*\.json')]"/>
+                    <xsl:variable name="numFilters" select="$filterJSONURIs[matches(.,'ssNum\d+.*\.json')]"/>
                     
-                    <div class="form-group row">
-                        <div class="offset-4 col-8">
-                            <!-- <button id="ssDoSearch"><xsl:sequence select="hcmc:getCaption('ssDoSearch', $captionLang)"/></button> -->
-                            <button id="ssDoSearch" name="submit" type="submit" class="btn btn-primary">Absenden</button>                            
+                    <!--If there are filters, then add a clear button-->
+                    <span class="clearButton">
+                        <button id="ssClear">
+                            <xsl:sequence select="hcmc:getCaption('ssClear', $captionLang)"/>
+                        </button>
+                    </span>
+                    <!--First, handle the desc filters-->
+                    <xsl:if test="not(empty($descFilters))">
+                        <div class="ssDescFilters">
+                            <!-- We stash these in a variable so we can output them 
+                                      sorted alphabetically based on their names, which we
+                                      don't know until they're created. -->
+                            <xsl:variable name="fieldsets" as="element(fieldset)*">
+                                <xsl:for-each select="$descFilters">
+                                    
+                                    <!--Get the document-->
+                                    <xsl:variable name="jsonDoc" select="unparsed-text(.) => json-to-xml()" as="document-node()"/>
+                                    
+                                    <!--And its name and id -->
+                                    <xsl:variable name="filterName" select="$jsonDoc//map:string[@key='filterName']"/>
+                                    <xsl:variable name="filterId" select="$jsonDoc//map:string[@key='filterId']"/>
+                                    
+                                    <!--And now create the fieldset and legend-->
+                                    <fieldset class="ssFieldset" title="{$filterName}" id="{$filterId}">
+                                        <legend><xsl:value-of select="$filterName"/></legend>
+                                        
+                                        <!--And create a ul from each of the embedded maps-->
+                                        <ul class="ssDescCheckboxList">
+                                            <!-- Before sorting checkbox items, we need to know
+                                              whether they're numeric or not. -->
+                                            <xsl:variable name="notNumeric" select="some $n in (for $s in $jsonDoc//map:map[@key]/map:string[@key='sortKey'] return $s castable as xs:decimal) satisfies $n = false()"/>
+                                            <xsl:variable name="sortedMaps" as="element(map:map)+">
+                                                <xsl:choose>
+                                                    <xsl:when test="$notNumeric">
+                                                        <xsl:for-each select="$jsonDoc//map:map[@key]">
+                                                          <!-- Note: the article-stripping here is crude and limited to a couple of languages. For anything important, users should provide a sort key. -->
+                                                            <xsl:sort select="replace(map:string[@key='sortKey'], '^((the)|(a)|(an)|(l[ea]s?)|(de[nrs]?)|([ie]l)|(un[oe]?))\s+', '', 'i')" lang="{$pageLang}"/>
+                                                            <xsl:sequence select="."/>
+                                                        </xsl:for-each>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <xsl:for-each select="$jsonDoc//map:map[@key]">
+                                                            <xsl:sort select="map:string[@key='sortKey']" data-type="number"/>
+                                                            <xsl:sequence select="."/>
+                                                        </xsl:for-each>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:variable>
+                                            
+                                            <xsl:for-each select="$sortedMaps">
+                                                <!--<xsl:sort select="if ($notNumeric)  then replace(map:string[@key='name'], '^((the)|(a)|(an))\s+', '', 'i') else xs:decimal(map:string[@key='name'])"/>-->
+                                                <!--And create the input item: the input item contains:
+                                            * an @title that specifies the filter name (e.g. Genre)
+                                            * an @value that specifies the filter value (e.g. Poem)
+                                            * an @id to associate the label for A11Y-->
+                                                <xsl:variable name="thisOptId" select="@key"/>
+                                                <xsl:variable name="thisOptName" select="map:string[@key='name']"/>
+                                                <li>
+                                                    <!--REMOVE staticSearch.desc after deprecation period?-->
+                                                    <input type="checkbox" title="{$filterName}" value="{$thisOptName}" id="{$thisOptId}"
+                                                        class="staticSearch.desc staticSearch_desc"/>
+                                                    <label for="{$thisOptId}"><xsl:value-of select="$thisOptName"/></label>
+                                                </li>
+                                            </xsl:for-each>
+                                        </ul>
+                                    </fieldset>
+                                </xsl:for-each>
+                            </xsl:variable>
+                            <xsl:for-each select="$fieldsets">
+                                <xsl:sort select="normalize-space(lower-case(legend))" lang="{$pageLang}"/>
+                                <xsl:sequence select="."/>
+                            </xsl:for-each>
                         </div>
-                    </div>
-<!-- RH -->                    
-                </div>
+                    </xsl:if>
+                    
+                    <!--Now create date boxes, if necessary-->
+                    
+                    <xsl:if test="not(empty($dateFilters))">
+                        <div class="ssDateFilters">
+                            <!-- We stash these in a variable so we can output them 
+                                      sorted alphabetically based on their names, which we
+                                      don't know until they're created. -->
+                            <xsl:variable name="fieldsets" as="element(fieldset)*">
+                                <xsl:for-each select="$dateFilters">
+                                    <xsl:variable name="jsonDoc" select="unparsed-text(.) => json-to-xml()" as="document-node()"/>
+                                    <xsl:variable name="filterName" select="$jsonDoc//map:string[@key='filterName']"/>
+                                    <xsl:variable name="filterId" select="$jsonDoc//map:string[@key='filterId']"/>
+                                    
+                                    <!--Get the minimum from the date regex-->
+                                    <xsl:variable name="minDate" as="xs:date" 
+                                        select="min((for $d in $jsonDoc//map:string[1][matches(., $dateRegex)] return hcmc:normalizeDateString($d, true())))"/>
+                                    
+                                    <!--And the maximum date-->
+                                    <xsl:variable name="maxDate" as="xs:date" 
+                                        select="max((for $d in $jsonDoc//map:string[1][matches(., $dateRegex)] return hcmc:normalizeDateString($d, false())))"/>
+                                    
+                                    <fieldset class="ssFieldset" title="{$filterName}" id="{$filterId}">
+                                        <!--And add the filter name as the legend-->
+                                        <legend><xsl:value-of select="$filterName"/></legend>
+                                        <span>
+                                            <label for="{$filterId}_from">From: </label>
+                                            <input type="text" maxlength="10" pattern="{$dateRegex}" title="{$filterName}" id="{$filterId}_from" class="staticSearch.date staticSearch_date" placeholder="{format-date($minDate, '[Y0001]-[M01]-[D01]')}" onchange="this.reportValidity()"/>
+                                        </span>
+                                        
+                                        <span>
+                                            <label for="{$filterId}_to">To: </label>
+                                            <input type="text" maxlength="10" pattern="{$dateRegex}" title="{$filterName}" id="{$filterId}_to" class="staticSearch.date staticSearch_date" placeholder="{format-date($maxDate, '[Y0001]-[M01]-[D01]')}" onchange="this.reportValidity()"/>
+                                        </span>
+                                    </fieldset>
+                                </xsl:for-each>
+                            </xsl:variable>
+                            <xsl:for-each select="$fieldsets">
+                              <xsl:sort select="normalize-space(lower-case(legend))" lang="{$pageLang}"/>
+                                <xsl:sequence select="."/>
+                            </xsl:for-each>
+                        </div>
+                    </xsl:if>
+                    
+                    <xsl:if test="not(empty($numFilters))">
+                        <div class="ssNumFilters">
+                            <!-- We stash these in a variable so we can output them 
+                                      sorted alphabetically based on their names, which we
+                                      don't know until they're created. -->
+                            <xsl:variable name="fieldsets" as="element(fieldset)*">
+                            
+                                <xsl:for-each select="$numFilters">
+                                    <xsl:variable name="jsonDoc" select="unparsed-text(.) => json-to-xml()"
+                                        as="document-node()"/>
+                                    <xsl:variable name="filterName" select="$jsonDoc//map:string[@key='filterName']"/>
+                                    <xsl:variable name="filterId" select="$jsonDoc//map:string[@key='filterId']"/>
+                                    <xsl:variable name="vals" select="$jsonDoc//map:string[not(@key)][. castable as xs:decimal]/xs:decimal(.)"/>
+                                    <xsl:variable name="minVal" select="min($vals)"/>
+                                    <xsl:variable name="maxVal" select="max($vals)"/>
+                                    
+                                    
+                                    <fieldset class="ssFieldset" title="{$filterName}" id="{$filterId}">
+                                        <!--And add the filter name as the legend-->
+                                        <legend><xsl:value-of select="$filterName"/></legend>
+                                        <span>
+                                            <label for="{$filterId}_from">From: </label>
+                                            <input type="number" min="{$minVal}" max="{$maxVal}" placeholder="{$minVal}" step="any"
+                                                title="{$filterName}" id="{$filterId}_from" 
+                                                class="staticSearch.num staticSearch_num"/>
+                                        </span>
+                                        
+                                        <span>
+                                            <label for="{$filterId}_to">To: </label>
+                                            <input type="number" min="{$minVal}" max="{$maxVal}" placeholder="{$maxVal}" step="any"
+                                                title="{$filterName}" id="{$filterId}_to" 
+                                                class="staticSearch.num staticSearch_num"/>
+                                        </span>
+                                    </fieldset>
+                                </xsl:for-each>
+                            </xsl:variable>
+                            <xsl:for-each select="$fieldsets">
+                              <xsl:sort select="normalize-space(lower-case(legend))" lang="{$pageLang}"/>
+                                <xsl:sequence select="."/>
+                            </xsl:for-each>
+                        </div>
+                    </xsl:if>
+                    
+                    <!--And now handle booleans-->
+                    <xsl:if test="not(empty($boolFilters))">
+                        <div class="ssBoolFilters">
+                            <!-- We create a single fieldset for all these filters, since they're individual. -->
+                            <fieldset class="ssFieldset">
+                                <!-- We stash these in a variable so we can output them 
+                                      sorted alphabetically based on their names, which we
+                                      don't know until they're created. -->
+                                <xsl:variable name="spans" as="element(span)*">
+                                    <xsl:for-each select="$boolFilters">
+                                        <xsl:variable name="jsonDoc" select="unparsed-text(.) => json-to-xml()" as="document-node()"/>
+                                        <xsl:variable name="filterName" select="$jsonDoc//map:string[@key='filterName']"/>
+                                        <xsl:variable name="filterId" select="$jsonDoc//map:string[@key='filterId']"/>
+                                        <span>
+                                            <label for="{$filterId}"><xsl:value-of select="$filterName"/>: </label>
+                                            <select id="{$filterId}" title="{$filterName}" class="staticSearch.bool staticSearch_bool">
+                                                <option value="">?</option>
+                                                <!-- Check mark = true -->
+                                                <option value="true">&#x2714;</option>
+                                                <!-- Cross = false -->
+                                                <option value="false">&#x2718;</option>
+                                            </select>
+                                        </span>
+                                    </xsl:for-each>
+                                </xsl:variable>
+                                <xsl:for-each select="$spans">
+                                  <xsl:sort select="normalize-space(lower-case(label))" lang="{$pageLang}"/>
+                                    <xsl:sequence select="."/>
+                                </xsl:for-each>
+                            </fieldset>
+                        </div>
+                    </xsl:if>
+                    <span class="postFilterSearchBtn">
+                        <button id="ssDoSearch2">
+                            <xsl:sequence select="hcmc:getCaption('ssDoSearch', $captionLang)"/>
+                        </button>
+                    </span>
+               
+                </xsl:if>
+
             </form>
             
             <!-- Popup message to show that search is being done. -->
-            <div id="ssSearching" style="display: none;">
-                <div class="de">Suche...</div>
-                <div class="en">Searching...</div>                
-                <!-- <xsl:sequence select="hcmc:getCaption('ssSearching', $captionLang)"/> -->
+            <div id="ssSearching">
+                <xsl:sequence select="hcmc:getCaption('ssSearching', $captionLang)"/>
             </div>
-<!-- RH -->
-            <div id="showMaxHits" style="display: none;">
-                <div class="de">Angezeigte Treffer max <span>5</span></div>
-                <div class="en">Displayed hits max <span>5</span></div>
-            </div>
-
-            <div id="showMinWordLength" style="display: none;">
-                <div class="de">Wortlänge min <span></span></div>
-                <div class="en">Word length min <span></span></div>
-             </div>
 
             <!--And now create the results div in the document-->
-<!-- RH -->
-            <!-- <div id="ssResults"> -->
-            <div id="ssResults" style="display: none;">
+            <div id="ssResults">
                 <!--...results here...-->
             </div>
             
             <!-- Finally, we add our logo and powered-by message. -->
-            <!-- <div id="ssPoweredBy"> -->
-            <div id="ssPoweredBy" style="display: none;">
-<!-- RH -->     
+            <div id="ssPoweredBy">                
                 <p>
                     <xsl:sequence select="hcmc:getCaption('ssPoweredBy', $captionLang)"/>
-                </p>
-                <a href="https://github.com/projectEndings/staticSearch"><xsl:apply-templates select="doc($svgLogoFile)" mode="svgLogo"/></a>
+                </p> 
+                <a href="https://github.com/projectEndings/staticSearch">
+                    <xsl:apply-templates select="doc($svgLogoFile)" mode="svgLogo"/>
+                </a>
             </div>
         </xsl:copy>
     </xsl:template>

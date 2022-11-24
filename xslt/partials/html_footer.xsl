@@ -6,12 +6,11 @@
     exclude-result-prefixes="xsl xs"
     version="2.0">
     <xsl:template match="/" name="html_footer">
-        <div class="container de">
-            <a href="#">Links</a><a href="impressum.html">Impressum</a><a href="dsgvo.html">Datenschutzerklärung</a>
+        <div class="container de">            
+            <div class="footer-imprint"><a href="imprint.html" target="_blank">Impressum</a></div>            
         </div>
         <div class="container en" style="display: none">
-            <a href="#">Links</a><a href="impressum.html">Imprint</a><a href="dsgvo.html">Privacy policy</a>
-        </div>
-        
+            <div class="footer-imprint"><a href="imprint.html" target="_blank">Imprint</a></div>
+        </div>        
     </xsl:template>
 </xsl:stylesheet>

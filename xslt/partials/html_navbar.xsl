@@ -23,37 +23,42 @@
                         <a class="active" href="#0" lang="de">DE</a> / <a href="#0" lang="en">EN</a>
                     </div>
                     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top flex-column ml-5">
-                        <div class="container de">
+                        <div class="container">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Start <span class="sr-only">(current)</span></a>
+                                        <a class="nav-link" href="index.html">                                            
+                                            <span class="de">Start <span class="sr-only">(current)</span></span>
+                                            <span class="en">Start <span class="sr-only">(current)</span></span>
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="letters.html">Brie<span class="special-f">f</span>e</a>
+                                        <a class="nav-link" href="letters.html">                                            
+                                            <span class="de">Brie<span class="special-f">f</span>e</span>
+                                            <span class="en">Letters</span>
+                                        </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="search.html">Suche</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="map.html">Karte</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="container en" style="display: none">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Start <span class="sr-only">(current)</span></a>
+                                        <a class="nav-link" href="search.html">                                            
+                                            <span class="de">Suche</span>
+                                            <span class="en">Search</span>
+                                        </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="letters.html">Letters</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="register.html">Indexes</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="register.html">                                            
+                                            <span class="de">Register</span>
+                                            <span class="en">Indexes</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="map.html">                                            
+                                            <span class="de">Karte</span>
+                                            <span class="en">Map</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

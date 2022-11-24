@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BuildStaticSearchCustom" default="all">
+
+<!-- BUILD FILE for customizing search page to the Ferdinand I Project -->
+
+  <!-- 
+        **********************************************************
+        *  Ant file for building a static search engine for a    *
+        *  specific site. When supplied with a config file path  *
+        *  using the -DconfigFile=/home/user/proj/cfg.xml, it    *
+        *  will build the index based on that configuration.     *
+        *  If not supplied with a configuration file, it will    *
+        *  build the test site by default.                       *
+        *                                                        *
+        *  Note that you can also specify a relative path using  *
+        *  -Dconfig=../rel/cfg.xml *                             *
+        *                                                        *
+        **********************************************************
+    -->
+
+  <!--****************************************************************
+     *                                                              *
+     *                           Properties                         *
+     *                                                              *
+     ****************************************************************-->
+
+  <!-- We want our own base directory in case basedir is overridden
+       by an invoking ant process. -->
+  <dirname property="ssBaseDir" file="${ant.file}"/>
+  <echo>ssBaseDir: ${ssBaseDir}</echo>
+  
+  <!-- Use the saxon in our lib folder. -->
+  <property name="ssSaxon" value="${ssBaseDir}/../lib/saxon-he-10.jar"/>
+  <echo>ssSaxon: ${ssSaxon}</echo>
+  
+  <!--The configuration file path, relative to this build file. -->
+  <property name="ssConfig" value="configTest.xml"/>
+  <echo>ssConfig: ${ssConfig}</echo>
+  
+  <!--The full path to the configuration file. You can use either this or ssConfig. -->
+  <property name="ssConfigFile" value="${ssBaseDir}/${ssConfig}"/>
+  <echo>ssConfigFile: ${ssConfigFile}</echo>
+  
+  <!--The derived name of the configuration directory based off of the configuration
+        file path-->
+  <dirname property="configDir" file="${ssConfigFile}"/>
+  <echo>configDir: ${configDir}</echo>
+  
+  <!--Load the configuration file as a property file-->
+  <xmlproperty file="${ssConfigFile}" keeproot="true"/>
+  
+  <!--Set the verbose flag to false by default; set to true to see detailed messages-->
+  <property name="ssVerbose" value="false"/>
+  
+  <!--The path to the search page, relative to the configuration directory-->
+  <property name="ssSearchFilePath" location="${configDir}/${config.params.searchFile}"/>
+  <echo>ssSearchFilePath: ${ssSearchFilePath}</echo>
+  
+  <!--The name of the collection dir, derived from the search file-->
+  <dirname property="ssCollectionDirName" file="${ssSearchFilePath}"/>
+  <echo>ssCollectionDirName: ${ssCollectionDirName}</echo>
+  
+  <!--Output folder, which is forked, depending on whether or not an output folder
+        is specified in the configuration file-->
+  <property name="ssOutputFolder" value="${config.params.outputFolder}"/>
+  
+  <!--Stemmer folder, which is forked, depending on whether or not a stemmer folder
+        is specified in the configuration file-->
+  <property name="ssStemmerFolder" value="${config.params.stemmerFolder}"/>
+  
+  <!--The directory for all of the static search assets (JSON files, Javascripts, et cetera).
+        Note that the static search directory is placed directly within the collection directory-->
+  <property name="staticSearchDir" value="${ssCollectionDirName}/${ssOutputFolder}/"/>
+  
+  <!--The basename of the search file with suffix still attached-->
+  <basename property="ssSearchPageBasename" file="${ssSearchFilePath}"/>
+  <echo>ssSearchPageBasename: ${ssSearchPageBasename}</echo>
+  
+  <!--The temporary search page, which is constructed by appending ssTemp_ to the search base name
+        and placing that file in the collectionDir-->
+  <property name="tempSearchPageOutput"
+    value="${ssCollectionDirName}/ssTemp_${ssSearchPageBasename}"/>
+  <echo>tempSearchPageOutput: ${tempSearchPageOutput}</echo>
+  
+  
+
+
+  <!--****************************************************************
+     *                                                              *
+     *                           Targets                            *
+     *                                                              *
+     ****************************************************************-->
+
+  <target name="all"
+    depends="makeSearchPageCustom">
+    <description>
+      TARGET: all
+      Default target for running the entire static search creation process.
+    </description>
+  </target>
+  
+  <target name="makeSearchPageCustom">
+    <description>
+      TARGET: makeSearchPage
+      This target creates the search page at the location
+      specified in the configuration file. If a file already exists, then this process modifies the
+      existing search page by replacing the content of div/@id='staticSearch'. If the file does not
+      exist, then a generic search page is generated. This runs an XSLT on itself with an output
+      specified as a temp page. That temporary page is then copied over and overwrites the original
+      page. </description>
+    <echo message="Creating customized search page..."/>
+        
+    <echo message="Creating temporary search page: ${tempSearchPageOutput}"/>
+
+    <java classpath="${ssSaxon}" classname="net.sf.saxon.Transform" failonerror="true">
+      <arg value="-xsl:${ssBaseDir}/xsl/makeSearchPage.xsl"/>
+      <arg value="-s:${ssSearchFilePath}"/>
+      <arg value="-o:${tempSearchPageOutput}"/>      
+      <arg value="--suppressXsltNamespaceCheck:on"/>
+      <!--<jvmarg value="-Xmx2048m"/>-->
+    </java>
+    
+    <echo message="Moving ${tempSearchPageOutput} to overwrite ${ssSearchFilePath}"/>
+    <move file="${tempSearchPageOutput}" tofile="${ssSearchFilePath}"/>
+    
+  </target>
+  
+  
+  
+  
+</project>

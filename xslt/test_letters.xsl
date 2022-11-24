@@ -120,109 +120,13 @@
                     <xsl:call-template name="html_footer"/>
                 </footer>
                 
-                <script>
-                    function langDeEn(input) {
-                    var navbar = "nav.navbar " ;
-                    var sidebar = "#pageContent " ;
-                    var pagetitle = "#pageTitle " ;
-                    var indexletters = "#indexLetters " ;
-                    var footer = "footer " ;
-                    if (input == "de") {  
-                        localStorage.setItem("language", "de") ;
-                        $( "div.langmenu a:lang(en)" ).removeClass("active");
-                        $( "div.langmenu a:lang(de)" ).addClass("active");
-                        $( navbar + "div.en" ).hide(); 
-                        $( navbar + "div.de" ).show();
-                        $( sidebar + "div.en" ).hide(); 
-                        $( sidebar + "div.de" ).show();
-                        $( pagetitle + "div.en" ).hide(); 
-                        $( pagetitle + "div.de" ).show();
-                        $( indexletters + "div.de" ).show();
-                        $( indexletters + "div.en" ).hide();
-                        $( footer + "div.en" ).hide(); 
-                        $( footer + "div.de" ).show();
-                    } else {    
-                        localStorage.setItem("language", "en") ;                        
-                        $( "div.langmenu a:lang(de)" ).removeClass("active");
-                        $( "div.langmenu a:lang(en)" ).addClass("active");
-                        $( navbar + "div.de" ).hide(); 
-                        $( navbar + "div.en" ).show();
-                        $( sidebar + "div.de" ).hide(); 
-                        $( sidebar + "div.en" ).show();
-                        $( pagetitle + "div.de" ).hide(); 
-                        $( pagetitle + "div.en" ).show();
-                        $( indexletters + "div.de" ).hide(); 
-                        $( indexletters + "div.en" ).show();
-                        $( footer + "div.de" ).hide(); 
-                        $( footer + "div.en" ).show();
-                    }
-                    }
-                </script>                
-                <script>
-                    $( document ).ready(function() {
-                        console.log( "ready!" );                                                
-                        $("ul.navbar-nav li.nav-item a").removeClass("active");
-                        $( "[href='letters.html']" ).addClass("active");
-                        
-                        $("#indexLetters div.item").hide();
-                        
-                        let anchor = $(location).attr('hash');  //get link anchor (#...)                        
-                        if(anchor.length!=0){  //check if link anchor exists
-                        //$(anchor).click(); //click on the menu item to open element
-                            var itemId = "#indexLetters " + anchor;
-                            $( itemId ).show();
-                        }                        
-                        
-                        console.log( localStorage.getItem("language") ) ;                        
-                        if ((localStorage.getItem("language") === null) || (localStorage.getItem("language") == "undefined")) {                            
-                            localStorage.setItem("language", "de") ;                            
-                        }
-                        
-                        langDeEn(localStorage.getItem("language")) ;                                                
-                    });
-                    
-                    $( "table.metadata a" ).click(function() {
-                        console.log( this );
-                        var click = $( this );
-                        var itemId = "#indexLetters " + click.attr("href");
-                        console.log( itemId );
-                        
-                        $("#indexLetters div.item").hide();
-                        $( itemId ).toggle();                        
-                    })                    
-                    
-                    $( "div.letter a" ).click(function() {
-                        console.log( this );
-                        var click = $( this );
-                        var itemId = "#indexLetters " + click.attr("href");
-                        console.log( itemId );
-                        
-                        $("#indexLetters div.item").hide();
-                        $( itemId ).toggle();                        
-                    })
-                    
-                    $( "div.commentary a" ).click(function() {
-                        console.log( this );
-                        var click = $( this );
-                        var itemId = "#indexLetters " + click.attr("href");
-                        console.log( itemId );
-                        
-                        $("#indexLetters div.item").hide();
-                        $( itemId ).toggle();
-                    })
-                    
-                    $( "div.langmenu a" ).click(function() {
-                        var click_lang = $( this );
-                        console.log( click_lang.attr( "lang" ));
-                        langDeEn(click_lang.attr( "lang" )) ;                        
-                    });
-                </script>
-                
+                <script src="js/language.js"/>
+                <script src="js/letters.js"/>
                 <script src="./static-search/ssHighlight.js"></script>
                 
             </body>
         </html>        
         
     </xsl:template>
-       
+    
 </xsl:stylesheet>

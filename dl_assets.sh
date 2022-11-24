@@ -6,3 +6,5 @@ mkdir -p html
 cp -r assets/staticData  html/js
 mkdir -p html/css/mockup/
 cp -r assets/mockup html/css/
+mkdir -p html/data/
+cp -r data/ html/

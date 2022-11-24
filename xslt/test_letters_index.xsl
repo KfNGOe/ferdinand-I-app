@@ -11,94 +11,73 @@
     <xsl:variable name="reg_place" select="document('../data/register/register_place.xml')"/>
     
     <xsl:template match="/" name="index_letters">
-        <div class="container" id="indexLetters">
-            <div class="de">
+        <div class="container" id="indexLetters">            
                 <xsl:for-each-group select=".//tei:persName" group-by="@xml:id">
                     <xsl:variable name="ID" select="./@xml:id"/>                
                     <div class="item" id="{./@xml:id}">                    
-                        <h3>Eintrag</h3>
+                        <h3>
+                            <span class="de">Eintrag</span>
+                            <span class="en">Entry</span>
+                        </h3>
                         <h4><xsl:value-of select="./@key"/> (Person)</h4>
                         
-                        <h4>Schreibweisen: <span class="fas fa-arrows-alt-v"></span></h4>
+                        <h4>
+                            <span class="de">Schreibweisen</span>
+                            <span class="en">Spellings</span>
+                            <span>
+                                <xsl:text>: </xsl:text>
+                            </span>
+                            <span class="fas fa-arrows-alt-v"></span>
+                        </h4>
                         <ul class="scroll-area">
                             <xsl:for-each select="$reg_person//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:persName/@xml:id=$ID]">
                                 <li><xsl:value-of select="."/></li>    
-                            </xsl:for-each>                                                
+                            </xsl:for-each>
                         </ul>
                         
-                        <h4>Vorkommen: <span class="fas fa-arrows-alt-v"></span></h4>            
+                        <h4>
+                            <span class="de">Vorkommen</span>
+                            <span class="en">Occur</span>
+                            <span>
+                                <xsl:text>: </xsl:text>
+                            </span>
+                            <span class="fas fa-arrows-alt-v"></span>
+                        </h4>            
                         <ul class="scroll-area">
                             <xsl:for-each select="$reg_person//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:persName/@xml:id=$ID]">
-                                <li>Band_1, <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="."/></a></li>                            
-                            </xsl:for-each>                        
-                        </ul>
-                    </div>
-                </xsl:for-each-group>
-                
-                <xsl:for-each-group select=".//tei:placeName" group-by="@xml:id">                
-                    <xsl:variable name="ID" select="./@xml:id"/>                
-                    <div class="item" id="{./@xml:id}">                    
-                        <h3>Eintrag</h3>
-                        <h4><xsl:value-of select="./@key"/> (Ort)</h4>
-                        
-                        <h4>Schreibweisen: <span class="fas fa-arrows-alt-v"></span></h4>
-                        <ul class="scroll-area">
-                            <xsl:for-each select="$reg_place//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:placeName/@xml:id=$ID]">
-                                <li><xsl:value-of select="."/></li>    
-                            </xsl:for-each>                                                
-                        </ul>
-                        
-                        <h4>Vorkommen: <span class="fas fa-arrows-alt-v"></span></h4>            
-                        <ul class="scroll-area">
-                            <xsl:for-each select="$reg_place//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:placeName/@xml:id=$ID]">
-                                <li>Band_1, <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="."/></a></li>                            
-                            </xsl:for-each>                        
-                        </ul>
-                    </div>
-                </xsl:for-each-group>
-                
-                <xsl:for-each-group select=".//tei:index/tei:term" group-by="@xml:id">                
-                    <xsl:variable name="ID" select="./@xml:id"/>                
-                    <div class="item" id="{./@xml:id}">                    
-                        <h3>Eintrag</h3>
-                        <h4><xsl:value-of select="./@key"/> (Schlagwort)</h4>
-                        
-                        <h4>Schreibweisen: <span class="fas fa-arrows-alt-v"></span></h4>
-                        <ul class="scroll-area">
-                            <xsl:for-each select="$reg_index//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:index/tei:term/@xml:id=$ID]">
-                                <li><xsl:value-of select="."/></li>    
-                            </xsl:for-each>                                                
-                        </ul>
-                        
-                        <h4>Vorkommen: <span class="fas fa-arrows-alt-v"></span></h4>            
-                        <ul class="scroll-area">
-                            <xsl:for-each select="$reg_index//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:index/tei:term/@xml:id=$ID]">
-                                <li>Band_1, <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="."/></a></li>                            
-                            </xsl:for-each>                        
-                        </ul>
-                    </div>
-                </xsl:for-each-group>
-            </div><!-- /col-lg-3 -->
-             
-            <div class="en" style="display: none">
-                <xsl:for-each-group select=".//tei:persName" group-by="@xml:id">
-                    <xsl:variable name="ID" select="./@xml:id"/>                
-                    <div class="item" id="{./@xml:id}">                    
-                        <h3>Entry</h3>
-                        <h4><xsl:value-of select="./@key"/> (Person)</h4>
-                        
-                        <h4>Spellings: <span class="fas fa-arrows-alt-v"></span></h4>
-                        <ul class="scroll-area">
-                            <xsl:for-each select="$reg_person//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:persName/@xml:id=$ID]">
-                                <li><xsl:value-of select="."/></li>    
-                            </xsl:for-each>                                                
-                        </ul>
-                        
-                        <h4>Occur: <span class="fas fa-arrows-alt-v"></span></h4>            
-                        <ul class="scroll-area">
-                            <xsl:for-each select="$reg_person//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:persName/@xml:id=$ID]">
-                                <li>Volume_1, <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="."/></a></li>                            
-                            </xsl:for-each>                        
+                                <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
+                                <li>
+                                    <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>
+                                    <span class="en">Volume_<xsl:value-of select="$volumeNr"/></span>
+                                    <span>
+                                        <xsl:text>,</xsl:text>
+                                    </span>
+                                    <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="./tei:val"/></a>
+                                    <span>
+                                        <xsl:text>.</xsl:text>
+                                        <xsl:if test="./tei:note[@type='div'] = 'regest_de'">
+                                            <span class="de">regest_de</span><span class="en">regest_de</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'regest_en'">
+                                            <span class="de">regest_en</span><span class="en">regest_en</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'archive_desc'">
+                                            <span class="de">archiv</span><span class="en">archive</span>
+                                        </xsl:if>                                 
+                                        <xsl:if test="./tei:note[@type='div'] = 'transcription'">
+                                            <span class="de">transkript</span><span class="en">transcript</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'commentary'">
+                                            <span class="de">kommentar</span><span class="en">commentary</span>
+                                        </xsl:if>
+                                        <xsl:if test="exists(./tei:note[@type='para']/text())">
+                                            <xsl:text>#</xsl:text>
+                                            <xsl:value-of select="./tei:note[@type='para']"/>   
+                                        </xsl:if>
+                                    </span>
+                                </li>
+                                
+                            </xsl:for-each>                                                    
                         </ul>
                     </div>
                 </xsl:for-each-group>
@@ -106,50 +85,161 @@
                 <xsl:for-each-group select=".//tei:placeName" group-by="@xml:id">
                     <xsl:variable name="ID" select="./@xml:id"/>                
                     <div class="item" id="{./@xml:id}">                    
-                        <h3>Entry</h3>
-                        <h4><xsl:value-of select="./@key"/> (Place)</h4>
+                        <h3>
+                            <span class="de">Eintrag</span>
+                            <span class="en">Entry</span>
+                        </h3>
+                        <h4>
+                            <xsl:value-of select="./@key"/>
+                            <span>
+                                <xsl:text> (</xsl:text>
+                            </span>
+                            <span class="de">Ort</span>
+                            <span class="en">Place</span>
+                            <span>
+                                <xsl:text>)</xsl:text>
+                            </span>
+                        </h4>
                         
-                        <h4>Spellings: <span class="fas fa-arrows-alt-v"></span></h4>
+                        <h4>
+                            <span class="de">Schreibweisen</span>
+                            <span class="en">Spellings</span>
+                            <span>
+                                <xsl:text>: </xsl:text>
+                            </span>
+                            <span class="fas fa-arrows-alt-v"></span>
+                        </h4>
                         <ul class="scroll-area">
                             <xsl:for-each select="$reg_place//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:placeName/@xml:id=$ID]">
                                 <li><xsl:value-of select="."/></li>    
                             </xsl:for-each>                                                
                         </ul>
                         
-                        <h4>Occur: <span class="fas fa-arrows-alt-v"></span></h4>            
+                        <h4>
+                            <span class="de">Vorkommen</span>
+                            <span class="en">Occur</span>
+                            <span>
+                                <xsl:text>: </xsl:text>
+                            </span>
+                            <span class="fas fa-arrows-alt-v"></span>
+                        </h4>
                         <ul class="scroll-area">
                             <xsl:for-each select="$reg_place//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:placeName/@xml:id=$ID]">
-                                <li>Volume_1, <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="."/></a></li>                            
-                            </xsl:for-each>                        
+                                <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
+                                <li>
+                                    <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>
+                                    <span class="en">Volume_<xsl:value-of select="$volumeNr"/></span>
+                                    <span>
+                                        <xsl:text>,</xsl:text>
+                                    </span>
+                                    <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="./tei:val"/></a>
+                                    <span>
+                                        <xsl:text>.</xsl:text>
+                                        <xsl:if test="./tei:note[@type='div'] = 'regest_de'">
+                                            <span class="de">regest_de</span><span class="en">regest_de</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'regest_en'">
+                                            <span class="de">regest_en</span><span class="en">regest_en</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'archive_desc'">
+                                            <span class="de">archiv</span><span class="en">archive</span>
+                                        </xsl:if>                                 
+                                        <xsl:if test="./tei:note[@type='div'] = 'transcription'">
+                                            <span class="de">transkript</span><span class="en">transcript</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'commentary'">
+                                            <span class="de">kommentar</span><span class="en">commentary</span>
+                                        </xsl:if>
+                                        <xsl:if test="exists(./tei:note[@type='para']/text())">
+                                            <xsl:text>#</xsl:text>
+                                            <xsl:value-of select="./tei:note[@type='para']"/>   
+                                        </xsl:if>
+                                    </span>
+                                </li> 
+                            </xsl:for-each>
                         </ul>
                     </div>
                 </xsl:for-each-group>
                 
-                <xsl:for-each-group select=".//tei:index/tei:term" group-by="@xml:id">
+                <xsl:for-each-group select=".//tei:index/tei:term" group-by="@xml:id">                
                     <xsl:variable name="ID" select="./@xml:id"/>                
                     <div class="item" id="{./@xml:id}">                    
-                        <h3>Entry</h3>
-                        <h4><xsl:value-of select="./@key"/> (Schlagwort)</h4>
+                        <h3>
+                            <span class="de">Eintrag</span>
+                            <span class="en">Entry</span>
+                        </h3>
+                        <h4>
+                            <xsl:value-of select="./@key"/>
+                            <span>
+                                <xsl:text> (</xsl:text>
+                            </span>
+                            <span class="de">Schlagwort</span>
+                            <span class="en">Keyword</span>
+                            <span>
+                                <xsl:text>)</xsl:text>
+                            </span>
+                        </h4>
                         
-                        <h4>Spellings: <span class="fas fa-arrows-alt-v"></span></h4>
+                        <h4>
+                            <span class="de">Schreibweisen</span>
+                            <span class="en">Spellings</span>
+                            <span>
+                                <xsl:text>: </xsl:text>
+                            </span>
+                            <span class="fas fa-arrows-alt-v"></span>
+                        </h4>
                         <ul class="scroll-area">
                             <xsl:for-each select="$reg_index//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:index/tei:term/@xml:id=$ID]">
                                 <li><xsl:value-of select="."/></li>    
                             </xsl:for-each>                                                
                         </ul>
                         
-                        <h4>Occur: <span class="fas fa-arrows-alt-v"></span></h4>            
+                        <h4>
+                            <span class="de">Vorkommen</span>
+                            <span class="en">Occur</span>
+                            <span>
+                                <xsl:text>: </xsl:text>
+                            </span>
+                            <span class="fas fa-arrows-alt-v"></span>
+                        </h4>            
                         <ul class="scroll-area">
                             <xsl:for-each select="$reg_index//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:index/tei:term/@xml:id=$ID]">
-                                <li>Volume_1, <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="."/></a></li>                            
-                            </xsl:for-each>                        
-                        </ul>
+                                <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
+                                <li>
+                                    <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>
+                                    <span class="en">Volume_<xsl:value-of select="$volumeNr"/></span>
+                                    <span>
+                                        <xsl:text>,</xsl:text>
+                                    </span>
+                                    <a href="{replace(./@source, '.xml', '.html')}#{$ID}"><xsl:value-of select="./tei:val"/></a>
+                                    <span>
+                                        <xsl:text>.</xsl:text>
+                                        <xsl:if test="./tei:note[@type='div'] = 'regest_de'">
+                                            <span class="de">regest_de</span><span class="en">regest_de</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'regest_en'">
+                                            <span class="de">regest_en</span><span class="en">regest_en</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'archive_desc'">
+                                            <span class="de">archiv</span><span class="en">archive</span>
+                                        </xsl:if>                                 
+                                        <xsl:if test="./tei:note[@type='div'] = 'transcription'">
+                                            <span class="de">transkript</span><span class="en">transcript</span>
+                                        </xsl:if>
+                                        <xsl:if test="./tei:note[@type='div'] = 'commentary'">
+                                            <span class="de">kommentar</span><span class="en">commentary</span>
+                                        </xsl:if>
+                                        <xsl:if test="exists(./tei:note[@type='para']/text())">
+                                            <xsl:text>#</xsl:text>
+                                            <xsl:value-of select="./tei:note[@type='para']"/>   
+                                        </xsl:if>
+                                    </span>
+                                </li> 
+                            </xsl:for-each>                                                    
+                        </ul>                        
                     </div>
                 </xsl:for-each-group>
-            </div>
-            <!-- /col-lg-3 -->
-            
         </div>
     </xsl:template>
-    
+
 </xsl:stylesheet>

@@ -5,12 +5,11 @@
     xmlns:tei="http://www.tei-c.org/ns/1.0" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     version="2.0" exclude-result-prefixes="xsl tei xs">
-     
-    <xsl:variable name="coll_toc" select="collection('../data/dtabf_id/band_001/')//tei:TEI"/>
     
-    <!--  
-    <xsl:variable name="coll_toc" select="document('../data/dtabf_id/test/A005.xml')//tei:TEI"/>
-    -->
+    <xsl:variable name="volume">band_001</xsl:variable>
+    
+    <xsl:variable name="coll_toc" select="collection('../data/dtabf_id/band_001/')//tei:TEI"/>
+        
     <xsl:template match="/" name="toc_letters">
         <div class="container" id="selectList">
             <div class="de">            
@@ -19,7 +18,7 @@
                 <!--
           <div class="scroll-area"> -->
                 <h3>
-                    <a class="selected" href="">Band 1 (Band_1)</a>
+                    <a class="selected" href="">Band <xsl:value-of select="replace(tokenize($volume, '_')[last()],'^0+','')"/></a>
                 </h3>
                 <xsl:call-template name="toc_content"/>
             </div>
@@ -29,7 +28,7 @@
                 <!--
           <div class="scroll-area"> -->
                 <h3>
-                    <a class="selected" href="">Volume 1 (Volume_1)</a>
+                    <a class="selected" href="">Volume <xsl:value-of select="replace(tokenize($volume, '_')[last()],'^0+','')"/></a>
                 </h3>
                 <xsl:call-template name="toc_content"/>
             </div>            
@@ -56,4 +55,5 @@
             </xsl:for-each>                
         </ul>        
     </xsl:template>
+
 </xsl:stylesheet>

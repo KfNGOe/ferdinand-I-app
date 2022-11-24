@@ -12,6 +12,12 @@
       
       <xsl:param name="file_name"/>
       
+	  <div id="registerFormat" style="display: none">		
+		<small>
+			<a href="./data/register/{$file_name}.xml" target="_blank" download="">xml</a>
+		</small>
+	  </div>
+	  
       <div class="container" id="table-register">
          <table class="table register-tabelle">
             <thead>
@@ -38,13 +44,16 @@
                   <tr>
                      <td style="display: none">
                         <xsl:if test="$file_name = 'register_person'">
-                           <xsl:value-of select=".//tei:persName/@xml:id"/>   
+                           <xsl:variable name="ID" select=".//tei:persName/@xml:id"/>
+                           <xsl:value-of select="$ID"/>   
                         </xsl:if>
                         <xsl:if test="$file_name = 'register_place'">
-                           <xsl:value-of select=".//tei:placeName/@xml:id"/>   
+                           <xsl:variable name="ID" select=".//tei:placeName/@xml:id"/>
+                           <xsl:value-of select="$ID"/>   
                         </xsl:if>
-                        <xsl:if test="$file_name = 'register_index'">
-                           <xsl:value-of select=".//tei:index/tei:term/@xml:id"/>   
+                        <xsl:if test="$file_name = 'register_index'">                           
+                           <xsl:variable name="ID" select=".//tei:index/tei:term/@xml:id"/>
+                           <xsl:value-of select="$ID"/>
                         </xsl:if>
                      </td>
                      <td style="display: none"></td>
@@ -69,8 +78,39 @@
                      </td>
                      <td>
                         <xsl:for-each select="./tei:note[@type='occurence']/tei:p">
+                           <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
                            <p>
-                              <span class="de">Band_1</span><span class="en">Volume_1</span>, <a href="{replace(./@source, '.xml', '.html')}"><xsl:value-of select="."/></a>
+                              <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>
+                              <span class="en">Volume_<xsl:value-of select="$volumeNr"/></span>
+                              <span>
+                                 <xsl:text>,</xsl:text>
+                              </span>
+                              <a href="{replace(./@source, '.xml', '.html')}">
+                                 <xsl:value-of select="./tei:val"/>
+                              </a>
+                              
+                              <span>
+                                 <xsl:text>.</xsl:text>
+                                 <xsl:if test="./tei:note[@type='div'] = 'regest_de'">
+                                    <span class="de">regest_de</span><span class="en">regest_de</span>
+                                 </xsl:if>
+                                 <xsl:if test="./tei:note[@type='div'] = 'regest_en'">
+                                    <span class="de">regest_en</span><span class="en">regest_en</span>
+                                 </xsl:if>
+                                 <xsl:if test="./tei:note[@type='div'] = 'archive_desc'">
+                                    <span class="de">archiv</span><span class="en">archive</span>
+                                 </xsl:if>                                 
+                                 <xsl:if test="./tei:note[@type='div'] = 'transcription'">
+                                    <span class="de">transkript</span><span class="en">transcript</span>
+                                 </xsl:if>
+                                 <xsl:if test="./tei:note[@type='div'] = 'commentary'">
+                                    <span class="de">kommentar</span><span class="en">commentary</span>
+                                 </xsl:if>
+                                 <xsl:if test="exists(./tei:note[@type='para']/text())">
+                                    <xsl:text>#</xsl:text>
+                                    <xsl:value-of select="./tei:note[@type='para']"/>   
+                                 </xsl:if>
+                              </span>
                            </p>                            
                         </xsl:for-each>
                      </td>                     
@@ -81,5 +121,5 @@
       </div>      
       
    </xsl:template>            
-            
+
 </xsl:stylesheet>

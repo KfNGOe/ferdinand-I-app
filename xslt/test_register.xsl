@@ -76,8 +76,7 @@
                         <xsl:call-template name="register_table">
                            <xsl:with-param name="file_name" select = "$file_name" />
                         </xsl:call-template>
-                     </div>
-                                    
+                     </div>         
                                     
                </div>
             </main>
@@ -86,88 +85,10 @@
                <xsl:call-template name="html_footer"/>
             </footer>
             
-            <script>
-               function langDeEn(input) {
-               var navbar = "nav.navbar " ;
-               var sidebar = "#pageContent " ;
-               var pagetitle = "#pageTitle " ;         
-               var footer = "footer " ;
-               if (input == "de") {  
-               localStorage.setItem("language", "de") ;
-               $( "div.langmenu a:lang(en)" ).removeClass("active");
-               $( "div.langmenu a:lang(de)" ).addClass("active");
-               $( navbar + "div.en" ).hide(); 
-               $( navbar + "div.de" ).show();
-               $( sidebar + ".en" ).hide(); 
-               $( sidebar + ".de" ).show();
-               $( pagetitle + ".en" ).hide(); 
-               $( pagetitle + ".de" ).show();             
-               $( footer + "div.en" ).hide(); 
-               $( footer + "div.de" ).show();
-               } else {    
-               localStorage.setItem("language", "en") ;                        
-               $( "div.langmenu a:lang(de)" ).removeClass("active");
-               $( "div.langmenu a:lang(en)" ).addClass("active");
-               $( navbar + "div.de" ).hide(); 
-               $( navbar + "div.en" ).show();
-               $( sidebar + ".de" ).hide(); 
-               $( sidebar + ".en" ).show();
-               $( pagetitle + ".de" ).hide(); 
-               $( pagetitle + ".en" ).show();             
-               $( footer + "div.de" ).hide(); 
-               $( footer + "div.en" ).show();
-               }
-               }
-            </script>
-            <script>
-               $( document ).ready(function() {
-                  
-                  var fileName = '<xsl:value-of select="$file_name"/>' ;
-                  
-                  $("ul.navbar-nav li.nav-item a").removeClass("active");
-                  $( "[href='register.html']" ).addClass("active");
-                  
-                  if(fileName == 'register_person') {
-                     console.log(fileName) ;
-                     $("div.register-menue a").removeClass("active");
-                     $( "#regPerson" ).addClass("active");
-                  }                  
-                  if(fileName == 'register_place') {
-                     console.log(fileName) ;
-                     $("div.register-menue a").removeClass("active");
-                     $( "#regPlace" ).addClass("active");
-                  }
-                  if(fileName == 'register_index') {
-                     console.log(fileName) ;
-                     $("div.register-menue a").removeClass("active");
-                     $( "#regIndex" ).addClass("active");
-                  }
-                                                      
-                  ///link anchor //to make an link anchor work set the href tag to #[uniqueName] and its id to [uniqueName] (uniquenames should match) 
-                  let anchor = $(location).attr('hash');  //get link anchor (#...)  
-                  if(anchor.length!=0){  //check if link anchor exists
-                  $(anchor).click(); //click on the menu item to open element
-                  }
-                  
-                  console.log(localStorage.getItem("language"));
-                  
-                  if (localStorage.getItem("language") === null || localStorage.getItem("language") == "undefined") {
-                  localStorage.setItem("language", "de");
-                  }
-                  
-                  langDeEn(localStorage.getItem("language")) ;                        
-               }) ;
-               
-               $("div.langmenu a").click(function() {
-                  var click_lang = $(this);
-                  console.log(click_lang.attr("lang"));
-                  langDeEn(click_lang.attr("lang"));               
-               }) ;               
-               
-            </script>
+            <script src="js/language.js"/>
+            <script src="js/register.js"/>
             
          </body>
       </html>
    </xsl:template>   
-       
 </xsl:stylesheet>
