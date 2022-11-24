@@ -79,13 +79,13 @@ jobs:
           asset_path: ./html.zip
           asset_name: html.zip
           asset_content_type: application/gzip
-      - name: Pushes to rh1967.github.io
+      - name: Pushes to ferdinand-I-page
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
         with:
-          source-directory: "html"
-          destination-github-username: "rh1967"
-          destination-repository-name: "rh1967.github.io"          
+          source-directory: "html"          
+          destination-github-username: "KfNGOe"
+          destination-repository-name: "ferdinand-I-page"          
           user-email: ferdinand-I-app@github.io
           target-branch: main
