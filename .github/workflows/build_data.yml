@@ -29,8 +29,8 @@ jobs:
           mv ant-contrib-1.0b3.jar /usr/share/ant/lib
       - name: Get Data
         uses: dsaltares/fetch-gh-release-asset@master
-        with:          
-          repo: "kfngoe/ferdinand-I-data"
+        with:
+          repo: "KfNGOe/ferdinand-I-data"
           file: "data.zip"
           target: "data.zip"
           token: ${{ secrets.ACCESS_TOKEN }} 
@@ -84,8 +84,8 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
         with:
-          source-directory: "html"          
+          source-directory: "html"
           destination-github-username: "KfNGOe"
-          destination-repository-name: "ferdinand-I-page"          
+          destination-repository-name: "ferdinand-I-page"
           user-email: ferdinand-I-app@github.io
           target-branch: main

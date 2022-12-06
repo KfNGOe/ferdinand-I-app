@@ -165,21 +165,30 @@
                 
                 <xsl:if test="exists(//tei:div[@n='4'])">
                     <div class="archive_desc">
-                        <h4>Archivvermerk, Überlieferung</h4>
+                        <h4>
+                            <span class="de">Archivvermerk, Überlieferung</span>
+                            <span class="en">Archive note, Tradition</span>
+                        </h4>
                         <xsl:apply-templates select="//tei:div[@n='4']"/>    
                     </div>    
                 </xsl:if>                
                 
                 <xsl:if test="exists(//tei:div[@n='5'])">
                     <div class="letter">
-                        <h4>Transkript</h4>
+                        <h4>
+                            <span class="de">Transkript</span>
+                            <span class="en">Transcript</span>
+                        </h4>
                         <xsl:apply-templates select="//tei:div[@type='letter']"/>
                     </div>    
                 </xsl:if>                
                 
                 <xsl:if test="exists(//tei:div[@n='6'])">
                     <div class="commentary">
-                        <h4>Kommentar</h4>
+                        <h4>
+                            <span class="de">Kommentar</span>
+                            <span class="en">Commentary</span>
+                        </h4>
                         <xsl:apply-templates select="//tei:div[@n='6']"/>
                     </div>    
                 </xsl:if>
@@ -187,6 +196,14 @@
             </div>
             <!-- /col-lg-9 -->
         </div>
+    </xsl:template>
+    
+    <xsl:template match="//tei:div[@n='1']//tei:table[@rend='rules']//tei:cell[1]">
+        <xsl:apply-templates select="tei:hi"/>
+    </xsl:template>
+    
+    <xsl:template match="//tei:div[@n='1']//tei:table[@rend='rules']//tei:cell[2]">
+        <xsl:apply-templates select="tei:hi"/>
     </xsl:template>
     
     <xsl:template match="//tei:div[@n='2' and @xml:lang='de']">
@@ -208,14 +225,6 @@
     <xsl:template match="//tei:div[@n='6']">
         <xsl:apply-templates/>
     </xsl:template>
-        
-    <xsl:template match="//tei:div[@n='1']//tei:table[@rend='rules']//tei:cell[1]">
-        <xsl:apply-templates select="tei:hi"/>
-    </xsl:template>
-    
-    <xsl:template match="//tei:div[@n='1']//tei:table[@rend='rules']//tei:cell[2]">
-        <xsl:apply-templates select="tei:hi"/>
-    </xsl:template>
     
     <xsl:template match="//tei:div[@type='letter' and @n='5']//tei:table[@rend='rules']">        
         <table class="table text">
@@ -235,9 +244,10 @@
                                                     <xsl:element name="a">
                                                         <xsl:attribute name="href">#comm_<xsl:value-of select="regex-group(1)"/></xsl:attribute>
                                                         <xsl:attribute name="id">trans_<xsl:value-of select="regex-group(1)"/></xsl:attribute>
-                                                        <span class="paragraphNr transcription de" title="Emendation des Herausgebers"><xsl:value-of select="regex-group(1)"/>] </span>
-                                                        <span class="paragraphNr transcription en" title="Emendation of the editor"><xsl:value-of select="regex-group(1)"/>] </span>
-                                                    </xsl:element>            
+                                                        <span class="paragraphNr transcription de" title="Emendation des Herausgebers"><xsl:value-of select="regex-group(1)"/>]</span>
+                                                        <span class="paragraphNr transcription en" title="Emendation of the editor"><xsl:value-of select="regex-group(1)"/>]</span>
+                                                    </xsl:element>
+                                                    <xsl:text> </xsl:text>
                                                 </xsl:matching-substring>
                                                 <xsl:non-matching-substring>
                                                     <xsl:value-of select="."/>
@@ -268,9 +278,10 @@
                                                             <xsl:element name="a">
                                                                 <xsl:attribute name="href">#comm_<xsl:value-of select="regex-group(1)"/></xsl:attribute>
                                                                 <xsl:attribute name="id">trans_<xsl:value-of select="regex-group(1)"/></xsl:attribute>
-                                                                <span class="paragraphNr transcription de" title="Emendation des Herausgebers"><xsl:value-of select="regex-group(1)"/>] </span>
-                                                                <span class="paragraphNr transcription en" title="Emendation of the editor"><xsl:value-of select="regex-group(1)"/>] </span>
-                                                            </xsl:element>            
+                                                                <span class="paragraphNr transcription de" title="Emendation des Herausgebers"><xsl:value-of select="regex-group(1)"/>]</span>
+                                                                <span class="paragraphNr transcription en" title="Emendation of the editor"><xsl:value-of select="regex-group(1)"/>]</span>
+                                                            </xsl:element>
+                                                            <xsl:text> </xsl:text>
                                                         </xsl:matching-substring>
                                                         <xsl:non-matching-substring>                                
                                                             <xsl:value-of select="."/>
@@ -359,16 +370,18 @@
                         <xsl:element name="a">
                             <xsl:attribute name="href">#trans_<xsl:value-of select="./@n"/></xsl:attribute>
                             <xsl:attribute name="id">comm_<xsl:value-of select="./@n"/></xsl:attribute>
-                            <span class="paragraphNr commentary"><xsl:value-of select="./@n"/>] </span>
-                        </xsl:element>                                                
+                            <span class="paragraphNr commentary"><xsl:value-of select="./@n"/>]</span>
+                        </xsl:element>
+                        <xsl:text> </xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:element name="a">
                             <xsl:attribute name="href">#comm_<xsl:value-of select="./@n"/></xsl:attribute>
                             <xsl:attribute name="id">trans_<xsl:value-of select="./@n"/></xsl:attribute>
-                            <span class="paragraphNr transcription de" title="Emendation des Herausgebers"><xsl:value-of select="./@n"/>] </span>
-                            <span class="paragraphNr transcription en" title="Emendation of the editor"><xsl:value-of select="./@n"/>] </span>
-                        </xsl:element>                        
+                            <span class="paragraphNr transcription de"><xsl:value-of select="./@n"/>]</span>
+                            <span class="paragraphNr transcription en"><xsl:value-of select="./@n"/>]</span>
+                        </xsl:element>
+                        <xsl:text> </xsl:text>
                     </xsl:otherwise>
                 </xsl:choose>                                
             </xsl:if>            
@@ -395,4 +408,3 @@
     </xsl:template>
 </xsl:stylesheet>
     
-

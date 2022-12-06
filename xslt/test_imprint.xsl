@@ -89,6 +89,13 @@
                                         <br/>
                                         Univ. Prof. Dr. Christopher F. Laferl (e-mail: <a href="mailto:christopher.laferl@plus.ac.at" title="Email an Christopher Laferl">christopher.laferl@plus.ac.at</a>)
                                     </p>
+
+                                    <p>
+                                        Technische Umsetzung:
+                                        <br/>
+                                        Peter Andorfer
+                                        Richard Hörmann
+                                    </p>
                                     
                                     <p>
                                         Design der Website:<br/>
@@ -101,7 +108,7 @@
                                             <li>- Kommission für Neuere Geschichte Österreichs</li>
                                             <li>- FWF (Projekte P18113 und P21016)</li>
                                             <li>- Fachbereich Romanistik der Universität Salzburg</li>
-                                            <li>- ACDH Austrian Centre for Digital Humanities</li>
+                                            <li>- ACDH-CH Austrian Centre for Digital Humanities and Cultural Heritage</li>
                                         </ul>
                                     </p>                                
                                     
@@ -148,6 +155,13 @@
                                         <br/>
                                         Univ. Prof. Dr. Christopher F. Laferl (e-mail: <a href="mailto:christopher.laferl@plus.ac.at" title="Email to Christopher Laferl">christopher.laferl@plus.ac.at</a>)
                                     </p>
+
+                                    <p>
+                                        Technical realisation:
+                                        <br/>
+                                        Peter Andorfer
+                                        Richard Hörmann
+                                    </p>
                                     
                                     <p>
                                         Design of the website:                                        
@@ -161,7 +175,7 @@
                                             <li>- Commission for Modern Austrian History</li>
                                             <li>- FWF (projects P18113 and P21016)</li>
                                             <li>- Department of Romance Studies at the University of Salzburg</li>
-                                            <li>- ACDH Austrian Centre for Digital Humanities</li>
+                                            <li>- ACDH-CH Austrian Centre for Digital Humanities and Cultural Heritage</li>
                                         </ul>
                                     </p>                                
                                     

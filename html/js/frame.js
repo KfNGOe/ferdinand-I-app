@@ -1,41 +1,52 @@
 
-    /*
-    function iframeLoad( click_para ) {
-        var frameId = "#" + $( click_para ).parents("div.text").attr("id") + " " + click_para.attr("href") ;                    
-        var frameDiv = $( frameId ).parent("div.frame-texts");
-        var frameTitle = $( frameId ).attr("title") ;
-        var gitRepo = "https://rh1967.github.io" ; 
-        var iframe = "https://view.officeapps.live.com/op/embed.aspx?src=" + gitRepo + "/data/docx/start/" + frameTitle + ".docx" ;                    
-        var frameTag = frameId + " iframe" ;
-        
-        $( frameTag ).remove();
-        $( frameId ).append("<iframe></iframe>");                    
-        $( frameTag ).attr("class", "frameStyle").attr( "src", iframe ) ;        
-        
-        $( "div.icon-texts" ).show() ;
-        $( "div.frame-texts" ).hide();
-
-        $( click_para ).parents("div.icon-texts").hide() ;
-        frameDiv.show();
-    }
-    */
-    
-    function embedLoad( click_para ) {
-        var embedId = "#" + $( click_para ).parents("div.text").attr("id") + " " + click_para.attr("href") ;                    
-        var embedDiv = $( embedId ).parent("div.frame-texts");
-        var embedTitle = $( embedId ).attr("title") ;
-        var gitRepo = "https://rh1967.github.io" ; 
-        var embed = gitRepo + "/data/pdf/start/" + embedTitle + ".pdf" ;
-        var embedTag = embedId + " embed" ;        
+    //get pdf de + en
+    function embedId(embedId_lang, gitRepo_lang, click_lang) {        
+        var embedDiv = $( embedId_lang ).parent("div.frame-texts");
+        var embedTitle = $( embedId_lang ).attr("title") ;
+        var embed = gitRepo_lang + "/data/pdf/start/" + embedTitle + ".pdf" ;
+        var embedTag = embedId_lang + " embed" ;        
         
         $( embedTag ).remove();
-        $( embedId ).append("<embed></embed>");                    
+        $( embedId_lang ).append("<embed></embed>");                    
         $( embedTag ).attr("class", "frameStyle").attr( "src", embed ) ;
 
         $( "div.icon-texts" ).show() ;
         $( "div.frame-texts" ).hide();
         
-        $( click_para ).parents("div.icon-texts").hide() ;
-        embedDiv.show();
+        $( click_lang ).parents("div.icon-texts").hide() ;
+        embedDiv.show();                
+    }
+    
+    function embedLoad( click_para ) {        
+        //get page url
+        var hostName = $(location).attr("hostname") ;
+        var pathName = $(location).attr("pathname") ;
+        var tmpUrl = hostName + pathName ;
+        var tmpUrlArr = tmpUrl.split('/') ;
+
+        if (tmpUrlArr.length == 1 || (tmpUrlArr.length == 2 && tmpUrlArr[1] == "index.html")) {
+            var gitRepo = "https://" + tmpUrlArr[0] ;
+        } else {
+            var gitRepo = "https://" + tmpUrlArr[0] + "/" + tmpUrlArr[1] ;
+        }
+        
+        //set pdf Id de + en
+        var textId = $( click_para ).parents("div.text").attr("id") ;
+        if ( $( click_para ).parent("div").hasClass("de") ) {
+            var embedId_de = "#" + textId + " " + click_para.attr("href") ;
+            embedId(embedId_de, gitRepo, click_para) ;
+            var embedId_en = "#" + textId + " " + $( click_para ).parent("div").next("div").children("a").attr("href") ;
+            embedId(embedId_en, gitRepo, click_para) ;
+        } else {
+            if ( $( click_para ).parent("div").hasClass("en") ) {                
+                var embedId_en = "#" + textId + " " + click_para.attr("href") ;
+                embedId(embedId_en, gitRepo, click_para) ;
+                var embedId_de = "#" + textId + " " + $( click_para ).parent("div").prev("div").children("a").attr("href") ;
+                embedId(embedId_de, gitRepo, click_para) ;
+            } else {
+                var embedIdList = "#" + textId + " " + click_para.attr("href") ;
+                embedId(embedIdList, gitRepo, click_para) ;
+            }            
+        }        
     }
     
