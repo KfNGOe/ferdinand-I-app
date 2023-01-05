@@ -83,7 +83,7 @@
                             <td>                                
                                 <xsl:for-each-group select=".//tei:persName" group-by="@key">
                                     <xsl:sort select="@key"/>                                
-                                    <a href="#{./@xml:id}">
+                                    <a href="#{./@n}">
                                         <xsl:value-of select="./@key"/>
                                     </a>
                                     <xsl:if test="position() != last()">
@@ -100,7 +100,7 @@
                             <td>
                                 <xsl:for-each-group select=".//tei:placeName" group-by="@key">
                                     <xsl:sort select="@key"/>
-                                    <a href="#{./@xml:id}">
+                                    <a href="#{./@n}">
                                         <xsl:value-of select="./@key"/>
                                     </a>
                                     <xsl:if test="position() != last()">
@@ -117,7 +117,7 @@
                             <td>
                                 <xsl:for-each-group select=".//tei:index/tei:term" group-by="@key">
                                     <xsl:sort select="@key"/>
-                                    <a href="#{./@xml:id}">
+                                    <a href="#{./@n}">
                                         <xsl:value-of select="./@key"/>
                                     </a>
                                     <xsl:if test="position() != last()">
@@ -390,19 +390,19 @@
     </xsl:template>
     
     <xsl:template match="tei:persName[@key]">
-        <a href="#{./@xml:id}">
+        <a href="#{./@n}">
             <xsl:apply-templates/>            
         </a>        
     </xsl:template>
     
     <xsl:template match="tei:placeName[@key]">
-        <a href="#{./@xml:id}">
+        <a href="#{./@n}">
             <xsl:apply-templates/>            
         </a>                
     </xsl:template>
     
     <xsl:template match="tei:index/tei:term[@key]">
-        <a href="#{./@xml:id}">
+        <a href="#{./@n}">
             <xsl:apply-templates/>                        
         </a>                
     </xsl:template>

@@ -95,6 +95,7 @@
                                         <br/>
                                         Peter Andorfer
                                         Richard Hörmann
+                                        Josef Wang
                                     </p>
                                     
                                     <p>
@@ -161,6 +162,7 @@
                                         <br/>
                                         Peter Andorfer
                                         Richard Hörmann
+                                        Josef Wang
                                     </p>
                                     
                                     <p>

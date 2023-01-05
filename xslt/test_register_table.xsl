@@ -44,15 +44,15 @@
                   <tr>
                      <td style="display: none">
                         <xsl:if test="$file_name = 'register_person'">
-                           <xsl:variable name="ID" select=".//tei:persName/@xml:id"/>
+                           <xsl:variable name="ID" select=".//tei:persName/@n"/>
                            <xsl:value-of select="$ID"/>   
                         </xsl:if>
                         <xsl:if test="$file_name = 'register_place'">
-                           <xsl:variable name="ID" select=".//tei:placeName/@xml:id"/>
+                           <xsl:variable name="ID" select=".//tei:placeName/@n"/>
                            <xsl:value-of select="$ID"/>   
                         </xsl:if>
                         <xsl:if test="$file_name = 'register_index'">                           
-                           <xsl:variable name="ID" select=".//tei:index/tei:term/@xml:id"/>
+                           <xsl:variable name="ID" select=".//tei:index/tei:term/@n"/>
                            <xsl:value-of select="$ID"/>
                         </xsl:if>
                      </td>

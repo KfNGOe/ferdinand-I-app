@@ -27,7 +27,7 @@
                 <xsl:for-each select=".//node()[parent::acdh:TopCollection]">
                     <xsl:copy-of select="."/>
                 </xsl:for-each>
-            </acdh:TopCollection>
+            </acdh:TopCollection>            
             
             <!-- 
             <xsl:for-each select=".//node()[parent::acdh:MetaAgents]">

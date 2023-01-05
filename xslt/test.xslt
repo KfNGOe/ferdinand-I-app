@@ -50,7 +50,7 @@
                             <td>
                                 <xsl:for-each-group select="//tei:persName" group-by="@key">
                                     <xsl:sort select="@key"/>
-                                    <a href="#{./@xml:id}" id="{./@xml:id}">
+                                    <a href="#{./@n}" id="{./@n}">
                                         <xsl:value-of select="./@key"/>
                                     </a> | </xsl:for-each-group>
                             </td>
@@ -144,7 +144,7 @@
     </xsl:template>
     
     <xsl:template match="tei:persName[@key]">
-        <a href="#{./@xml:id}" id="{./@xml:id}">
+        <a href="#{./@n}" id="{./@n}">
             <xsl:apply-templates/>            
         </a>        
     </xsl:template>

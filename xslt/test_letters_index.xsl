@@ -12,9 +12,9 @@
     
     <xsl:template match="/" name="index_letters">
         <div class="container" id="indexLetters">            
-                <xsl:for-each-group select=".//tei:persName" group-by="@xml:id">
-                    <xsl:variable name="ID" select="./@xml:id"/>                
-                    <div class="item" id="{./@xml:id}">                    
+                <xsl:for-each-group select=".//tei:persName" group-by="@n">
+                    <xsl:variable name="ID" select="./@n"/>                
+                    <div class="item" id="{./@n}">                    
                         <h3>
                             <span class="de">Eintrag</span>
                             <span class="en">Entry</span>
@@ -30,7 +30,7 @@
                             <span class="fas fa-arrows-alt-v"></span>
                         </h4>
                         <ul class="scroll-area">
-                            <xsl:for-each select="$reg_person//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:persName/@xml:id=$ID]">
+                            <xsl:for-each select="$reg_person//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:persName/@n=$ID]">
                                 <li><xsl:value-of select="."/></li>    
                             </xsl:for-each>
                         </ul>
@@ -44,7 +44,7 @@
                             <span class="fas fa-arrows-alt-v"></span>
                         </h4>            
                         <ul class="scroll-area">
-                            <xsl:for-each select="$reg_person//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:persName/@xml:id=$ID]">
+                            <xsl:for-each select="$reg_person//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:persName/@n=$ID]">
                                 <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
                                 <li>
                                     <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>
@@ -82,9 +82,9 @@
                     </div>
                 </xsl:for-each-group>
                 
-                <xsl:for-each-group select=".//tei:placeName" group-by="@xml:id">
-                    <xsl:variable name="ID" select="./@xml:id"/>                
-                    <div class="item" id="{./@xml:id}">                    
+                <xsl:for-each-group select=".//tei:placeName" group-by="@n">
+                    <xsl:variable name="ID" select="./@n"/>                
+                    <div class="item" id="{./@n}">                    
                         <h3>
                             <span class="de">Eintrag</span>
                             <span class="en">Entry</span>
@@ -110,7 +110,7 @@
                             <span class="fas fa-arrows-alt-v"></span>
                         </h4>
                         <ul class="scroll-area">
-                            <xsl:for-each select="$reg_place//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:placeName/@xml:id=$ID]">
+                            <xsl:for-each select="$reg_place//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:placeName/@n=$ID]">
                                 <li><xsl:value-of select="."/></li>    
                             </xsl:for-each>                                                
                         </ul>
@@ -124,7 +124,7 @@
                             <span class="fas fa-arrows-alt-v"></span>
                         </h4>
                         <ul class="scroll-area">
-                            <xsl:for-each select="$reg_place//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:placeName/@xml:id=$ID]">
+                            <xsl:for-each select="$reg_place//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:placeName/@n=$ID]">
                                 <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
                                 <li>
                                     <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>
@@ -161,9 +161,9 @@
                     </div>
                 </xsl:for-each-group>
                 
-                <xsl:for-each-group select=".//tei:index/tei:term" group-by="@xml:id">                
-                    <xsl:variable name="ID" select="./@xml:id"/>                
-                    <div class="item" id="{./@xml:id}">                    
+                <xsl:for-each-group select=".//tei:index/tei:term" group-by="@n">                
+                    <xsl:variable name="ID" select="./@n"/>                
+                    <div class="item" id="{./@n}">                    
                         <h3>
                             <span class="de">Eintrag</span>
                             <span class="en">Entry</span>
@@ -189,7 +189,7 @@
                             <span class="fas fa-arrows-alt-v"></span>
                         </h4>
                         <ul class="scroll-area">
-                            <xsl:for-each select="$reg_index//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:index/tei:term/@xml:id=$ID]">
+                            <xsl:for-each select="$reg_index//tei:note[@type='writings']/tei:p[ancestor::tei:item//tei:index/tei:term/@n=$ID]">
                                 <li><xsl:value-of select="."/></li>    
                             </xsl:for-each>                                                
                         </ul>
@@ -203,7 +203,7 @@
                             <span class="fas fa-arrows-alt-v"></span>
                         </h4>            
                         <ul class="scroll-area">
-                            <xsl:for-each select="$reg_index//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:index/tei:term/@xml:id=$ID]">
+                            <xsl:for-each select="$reg_index//tei:note[@type='occurence']/tei:p[ancestor::tei:item//tei:index/tei:term/@n=$ID]">
                                 <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>
                                 <li>
                                     <span class="de">Band_<xsl:value-of select="$volumeNr"/></span>

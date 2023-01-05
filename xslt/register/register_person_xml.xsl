@@ -28,7 +28,7 @@
                   <xsl:for-each-group select="//tei:div[@type='letter']//tei:persName | //tei:div[@type='commentary']//tei:persName" group-by="@key">
                      <xsl:sort select="@key"/> 
                      <item>                    
-                        <persName xml:id="#person_{generate-id()}">
+                        <persName n="#person_{generate-id()}">
                            <xsl:value-of select="@key"/>
                         </persName>
                         <note type="writings">
