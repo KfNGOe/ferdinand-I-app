@@ -22,13 +22,19 @@
          <table class="table register-tabelle">
             <thead>
                <tr>
-                  <th scope="col" style="display: none">Local-ID</th>
-                  <th scope="col" style="display: none">GND</th>
-                  <th scope="col" style="display: none">Geonames</th>
+                  <th scope="col" style="display: none">Local-ID</th>                  
                   <th scope="col">
                      <span class="de">Eintrag</span>
                      <span class="en">Entry</span>
                   </th>
+                  <xsl:choose>
+                     <xsl:when test="$file_name = 'register_place'">
+                        <th scope="col">PID</th>
+                     </xsl:when>
+                     <xsl:otherwise>
+                        <th scope="col" style="display: none"/>
+                     </xsl:otherwise>
+                  </xsl:choose>
                   <th scope="col">
                      <span class="de">Schreibweisen</span>
                      <span class="en">Writings</span>
@@ -42,6 +48,7 @@
             <tbody>
                <xsl:for-each select=".//tei:item">
                   <tr>
+                     <!-- Local-ID -->
                      <td style="display: none">
                         <xsl:if test="$file_name = 'register_person'">
                            <xsl:variable name="ID" select=".//tei:persName/@n"/>
@@ -56,19 +63,73 @@
                            <xsl:value-of select="$ID"/>
                         </xsl:if>
                      </td>
-                     <td style="display: none"></td>
-                     <td style="display: none"></td>
+                     <!-- Entry -->
                      <td>                        
                         <xsl:if test="$file_name = 'register_person'">
                            <xsl:value-of select=".//tei:persName/text()"/>   
                         </xsl:if>
                         <xsl:if test="$file_name = 'register_place'">
-                           <xsl:value-of select=".//tei:placeName/text()"/>   
+                           <xsl:variable name="ID" select="./tei:note[@type ='geoname']/text()"/>
+                           <xsl:choose>
+                              <xsl:when test="not(empty($ID))">
+                                 <a href="map.html#{$ID}">
+                                    <xsl:value-of select=".//tei:placeName/text()"/>   
+                                 </a>                                 
+                              </xsl:when>
+                              <xsl:otherwise>
+                                 <xsl:value-of select=".//tei:placeName/text()"/>
+                              </xsl:otherwise>
+                           </xsl:choose>
                         </xsl:if>
                         <xsl:if test="$file_name = 'register_index'">
                            <xsl:value-of select=".//tei:index/tei:term/text()"/>   
                         </xsl:if>
                      </td>
+                     <!-- PID -->
+                     <xsl:choose>
+                        <xsl:when test="$file_name = 'register_place'">
+                           <td>
+                           <!-- e.g. Vienna 
+                              GND: https://d-nb.info/gnd/4066009-6
+                              geonames: https://www.geonames.org/2761369
+                              wikidata: https://www.wikidata.org/wiki/Q1741
+                           -->
+                              <xsl:variable name="geonameId" select="./tei:note[@type='geoname']/text()"/>
+                              <xsl:variable name="gndId" select="./tei:note[@type='gnd']/text()"/>
+                              <p>
+                                 <span class="geoname-url">                                    
+                                    <xsl:choose>
+                                       <xsl:when test="not(empty($geonameId))">
+                                          <a href="https://www.geonames.org/{$geonameId}" target="_blank">
+                                             <xsl:value-of select="$geonameId"/>
+                                          </a>                                          
+                                       </xsl:when>
+                                    </xsl:choose>                                                                  
+                                 </span>                                                                  
+                                 <span class="geoname-logo">
+                                    <!-- <a href="nnnn"> -->
+                                       <img src="dist/assets/images/mockup/geonames_logo.png" title="Place ID editor"/>                                          
+                                    <!-- </a> -->
+                                 </span>                                 
+                              </p>
+                              <p>
+                                 <span class="gnd-url">                                    
+                                    <xsl:choose>
+                                       <xsl:when test="not(empty($gndId))">
+                                          <a href="https://d-nb.info/gnd/{$gndId}" target="_blank">
+                                             <xsl:value-of select="$gndId"/>
+                                          </a>
+                                       </xsl:when>
+                                    </xsl:choose>                                                                  
+                                 </span>
+                              </p>                              
+                           </td>
+                        </xsl:when>
+                        <xsl:otherwise>
+                           <td style="display: none"/>                           
+                        </xsl:otherwise>
+                     </xsl:choose>
+                     <!-- Writings -->                     
                      <td>
                         <xsl:for-each select="./tei:note[@type='writings']/tei:p">
                            <p>
@@ -76,6 +137,7 @@
                            </p>    
                         </xsl:for-each>
                      </td>
+                     <!-- Occurence -->
                      <td>
                         <xsl:for-each select="./tei:note[@type='occurence']/tei:p">
                            <xsl:variable name="volumeNr" select="./tei:note[@type='volNr']"/>

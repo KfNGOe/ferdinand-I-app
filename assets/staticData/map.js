@@ -5,7 +5,12 @@
         $( "[href='map.html']" ).addClass("active");
         
         //hide toc map
-        $("#pageContent #toc-map").hide();
+        if (markerFlag == false) {
+            $("#pageContent #toc-map").hide();
+        } else {
+            //show toc map if extern triggered
+            $("#pageContent #toc-map").show();
+        }
         
         ///link anchor //to make an link anchor work set the href tag to #[uniqueName] and its id to [uniqueName] (uniquenames should match) 
         let anchor = $(location).attr('hash');  //get link anchor (#...)  
@@ -13,7 +18,7 @@
             $(anchor).click(); //click on the menu item to open element
         }
         
-        browserStorage() ;        
+        browserStorage() ;
     }) ;
 
     $("div.langmenu a").click(function() {
