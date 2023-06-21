@@ -7,10 +7,12 @@
     version="2.0">
     <xsl:template match="/" name="html_footer">
         <div class="container de">            
-            <div class="footer-imprint"><a href="imprint.html" target="_blank">Impressum</a></div>            
+            <div class="footer-imprint"><a href="imprint.html" target="_blank">Impressum</a></div>
+            <div class="footer-editor" style="display: none"><a href="#0">Editor</a></div>                        
         </div>
         <div class="container en" style="display: none">
             <div class="footer-imprint"><a href="imprint.html" target="_blank">Imprint</a></div>
-        </div>        
+            <div class="footer-editor" style="display: none"><a href="#0">Editor</a></div>                        
+        </div>                
     </xsl:template>
 </xsl:stylesheet>

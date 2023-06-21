@@ -7,11 +7,15 @@
    version="2.0" exclude-result-prefixes="xsl tei xs">
    <xsl:output encoding="UTF-8" media-type="text/html" method="xhtml" version="1.0" indent="yes" omit-xml-declaration="yes"/>
    
-   <xsl:import href="./partials/html_navbar.xsl"/>
    <xsl:import href="./partials/html_head.xsl"/>   
-   <xsl:import href="./test_register_table.xsl"/>
+   <xsl:import href="./partials/html_navbar.xsl"/>
    <xsl:import href="./partials/html_footer.xsl"/>
+   <xsl:import href="./test_register_table.xsl"/>
    
+   <xsl:variable name="map_tmp" select="'../data/json/map.json'"/>
+   <xsl:variable name="map_tmp_ws" select="unparsed-text($map_tmp)"/>
+   <xsl:variable name="map_json" select="normalize-space($map_tmp_ws)"/>
+
    <xsl:template match="/">
       
       <xsl:variable name="full_path">
@@ -84,10 +88,20 @@
             <footer class="footer mt-auto pt-5">
                <xsl:call-template name="html_footer"/>
             </footer>
+
+            <script type="text/javascript">
+               var map_json = '<xsl:value-of select="$map_json"/>' ;
+               console.log("map_json =", map_json) ;
+               let markers = JSON.parse(map_json) ;
+               console.log("markers =", markers) ;
+           </script>
             
             <script src="js/language.js"/>
             <script src="js/register.js"/>
-            
+            <script src="js/pid_editor.js"/>
+            <script src="js/login_editor.js"/>
+            <script src="js/geoname_api.js"/>
+            <script type="module" src="js/git_api.js"></script>
          </body>
       </html>
    </xsl:template>   

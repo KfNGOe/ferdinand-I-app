@@ -7,8 +7,7 @@
     <xsl:output encoding="UTF-8" media-type="text/html" method="xhtml" version="1.0" indent="yes" omit-xml-declaration="yes"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
-    <xsl:import href="./partials/html_footer.xsl"/>
-    
+    <xsl:import href="./partials/html_footer.xsl"/>    
     <xsl:import href="./test_index_text.xsl"/>
     
     <xsl:template match="/">
@@ -98,8 +97,7 @@
                 
                 <script src="js/language.js"/>
                 <script src="js/frame.js"/>
-                <script src="js/index.js"/>
-                                                
+                <script src="js/index.js"/>     
             </body>
         </html>
     </xsl:template>

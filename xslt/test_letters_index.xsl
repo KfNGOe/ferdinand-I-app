@@ -19,8 +19,7 @@
                             <span class="de">Eintrag</span>
                             <span class="en">Entry</span>
                         </h3>
-                        <h4><xsl:value-of select="./@key"/> (Person)</h4>
-                        
+                        <h4><xsl:value-of select="./@key"/> (Person)</h4>                        
                         <h4>
                             <span class="de">Schreibweisen</span>
                             <span class="en">Spellings</span>
@@ -83,14 +82,24 @@
                 </xsl:for-each-group>
                 
                 <xsl:for-each-group select=".//tei:placeName" group-by="@n">
-                    <xsl:variable name="ID" select="./@n"/>                
+                    <xsl:variable name="ID" select="./@n"/>                    
+                    <xsl:variable name="geoID" select="$reg_place//tei:note[@type ='geoname']/text()[ancestor::tei:item//tei:placeName/@n=$ID]"/>
                     <div class="item" id="{./@n}">                    
                         <h3>
                             <span class="de">Eintrag</span>
                             <span class="en">Entry</span>
                         </h3>
                         <h4>
-                            <xsl:value-of select="./@key"/>
+                            <xsl:choose>
+                                <xsl:when test="exists($geoID)">
+                                    <a href="map.html#{$geoID}">
+                                        <xsl:value-of select="./@key"/>
+                                    </a>                                    
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="./@key"/>                                    
+                                </xsl:otherwise>
+                            </xsl:choose>                                                                                    
                             <span>
                                 <xsl:text> (</xsl:text>
                             </span>

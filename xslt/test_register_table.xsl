@@ -107,11 +107,12 @@
                                     </xsl:choose>                                                                  
                                  </span>                                                                  
                                  <span class="geoname-logo">
-                                    <!-- <a href="nnnn"> -->
+                                    <xsl:variable name="ID" select=".//tei:placeName/@n"/>
+                                    <a href="#0" role="button" id="{replace($ID,'place_','geo_')}">
                                        <img src="dist/assets/images/mockup/geonames_logo.png" title="Place ID editor"/>                                          
-                                    <!-- </a> -->
-                                 </span>                                 
-                              </p>
+                                    </a>                                    
+                                 </span>                                                                  
+                              </p>                              
                               <p>
                                  <span class="gnd-url">                                    
                                     <xsl:choose>
@@ -179,7 +180,29 @@
                   </tr>
                </xsl:for-each>
             </tbody>
-         </table>            
+         </table>
+         <div class="geo_dialog" id="geo_dialog" title="Pid Editor (nur für Berechtigte)">
+            <form id="geo_form">
+               <p>
+                  <label for="entry">Eintrag </label>                  
+                  <input type="text" id="geo_entry" placeholder="keyname or geoname" required=""/>
+                  <br/>
+                  <label for="description">Beschreibung </label>
+                  <input type="text" id="geo_desc" placeholder="name description"/>
+                  <br/>
+                  <label for="pid">PID </label>
+                  <input type="text" id="geo_pid" placeholder="geoname ID"/>
+               </p>
+            </form>
+         </div>
+         <div class="login_dialog" title="Eingabe git token">
+            <form id="login_form">
+                <p>
+                    Passwort
+                    <input type="password" id="login_entry" name="git token" minlength="20" required="true"/>                    
+                </p>
+            </form>
+        </div>                    
       </div>      
       
    </xsl:template>            
