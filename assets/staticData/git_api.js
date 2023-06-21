@@ -1,5 +1,5 @@
 const TOKEN = window.git_token ;
-const REPO = 'dev-ferdinand-I-data' ;
+const REPO = 'ferdinand-I-data' ;
 const BRANCH = 'main' ;
 //const BRANCH = 'rh-map' ;
 const PATH = 'data/json/map.json' ;
