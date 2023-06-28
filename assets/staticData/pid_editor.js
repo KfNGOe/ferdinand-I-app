@@ -106,6 +106,7 @@ $("#table-register .geoname-logo a").click(function(){
     //init editor dialog boxes
     var pos = { my: "center center", at: "center top+150", of: window } ; 
     $(function() {
+        window.open("https://www.geonames.org/", "popupWindow", "width=600,height=600") ;
         $( ".geo_dialog" ).dialog({
             autoOpen: true,
             position:pos,
@@ -125,11 +126,11 @@ $("#table-register .geoname-logo a").click(function(){
     });    
 }) ;
 
-function reset() {
-    $("input#geo_entry").val("");
-    $("input#geo_desc").val("");
-    $("input#geo_pid").val("");
-}
+function reset() {    
+    $("input#geo_entry").val("" + marker_editor.key + "") ;
+    $("input#geo_desc").val("") ;
+    $("input#geo_pid").val("") ;
+ }
 
 function save() {
     //read new input data
